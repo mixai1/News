@@ -1,0 +1,5 @@
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=LENOVO-PC\\MYDB;Database=DataBaseNewsSite;Trusted_Connection=True;MultipleActiveResultSets=true"
+  }
+}
