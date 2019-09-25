@@ -26,7 +26,7 @@ namespace TestNewsSite.Controllers
         {
             var newViewModel = new NewViewModel()
             {
-                Title = "",
+                Title = "Add News",
                 ButtonName = "Add News",
                 RedirectUrl = Url.Action("Index")
             };
@@ -48,6 +48,23 @@ namespace TestNewsSite.Controllers
             await _INewsRepository.DeleteNewIdAsync(id);
 
             return RedirectToAction("Index");
+        }
+
+
+        public async Task<ActionResult> EditNews(int id)
+        {
+            var editNews = await _INewsRepository.GetNewIdAsync(id);
+
+            var newsModel = new NewViewModel
+            {
+                Title = "Edit Student",
+                ButtonName = "Save",
+                RedirectUrl = Url.Action("Index", "Student"),
+                Heading = editNews.Heading,
+                Id = editNews.Id
+            };
+
+            return View(newsModel);
         }
 
 

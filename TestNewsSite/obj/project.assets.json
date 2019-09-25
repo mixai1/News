@@ -11914,11 +11914,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\пк\\Documents\\GitHub\\News\\TestNewsSite\\TestNewsSite\\TestNewsSite.csproj",
+      "projectUniqueName": "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\TestNewsSite\\TestNewsSite.csproj",
       "projectName": "TestNewsSite",
-      "projectPath": "C:\\Users\\пк\\Documents\\GitHub\\News\\TestNewsSite\\TestNewsSite\\TestNewsSite.csproj",
+      "projectPath": "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\TestNewsSite\\TestNewsSite.csproj",
       "packagesPath": "C:\\Users\\пк\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\пк\\Documents\\GitHub\\News\\TestNewsSite\\TestNewsSite\\obj\\",
+      "outputPath": "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\TestNewsSite\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
