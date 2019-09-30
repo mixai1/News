@@ -3,21 +3,22 @@ using System;
 using System.Threading.Tasks;
 using TestNewsSite.Interfaces;
 using TestNewsSite.Models;
+using TestNewsSite.UnitofWork;
 using TestNewsSite.VeiwModels;
 
 namespace TestNewsSite.Controllers
 {
     public class NewsController : Controller
     {
-        private readonly INewsRepository _INewsRepository;
-        public NewsController(INewsRepository news)
+        private readonly IUnitOfWork _unitOfWork;
+        public NewsController(IUnitOfWork unitOfWork)
         {
-            _INewsRepository = news; 
+            _unitOfWork = unitOfWork;
         }
         
         public async Task<ActionResult> Index()
         {
-            var IndexNews = await _INewsRepository.GetAllNewsAsync();
+            var IndexNews = await _unitOfWork.News.GetAllNewsAsync();
             return View(IndexNews);
         }
 
@@ -36,36 +37,36 @@ namespace TestNewsSite.Controllers
         }
 
 
-        public async Task<ActionResult> FoundNewsIdofDeteils(int id)
+        public async Task<ActionResult> FoundNewsIdofDeteils(Guid id)
         {
-            var _newsId = await _INewsRepository.GetNewIdAsync(id);
+            var _newsId = await _unitOfWork.News.GetNewsIdAsync(id);
 
 
             return View(new NewViewModel { /*Id = _newsId.Id,*/ Heading = _newsId.Heading });
         }
-        public async Task<ActionResult> DeletNews(int id)
+        public ActionResult DeletNews(Guid id)
         {
-            await _INewsRepository.DeleteNewIdAsync(id);
+             _unitOfWork.News.DeleteNewsId(id);
 
             return RedirectToAction("Index");
         }
 
 
-        public async Task<ActionResult> EditNews(int id)
-        {
-            var editNews = await _INewsRepository.GetNewIdAsync(id);
+        //public async Task<ActionResult> EditNews(NewViewModel newViewModel)
+        //{
+        //    var editNews = await _unitOfWork.News.UpdateNewsAsunc(newViewModel);
 
-            var newsModel = new NewViewModel
-            {
-                Title = "Edit Student",
-                ButtonName = "Save",
-                RedirectUrl = Url.Action("Index", "Student"),
-                Heading = editNews.Heading,
-                Id = editNews.Id
-            };
+        //    var newsModel = new NewViewModel
+        //    {
+        //        Title = "Edit Student",
+        //        ButtonName = "Save",
+        //        RedirectUrl = Url.Action("Index", "Student"),
+        //        Heading = editNews.Heading,
+        //        Id = editNews.Id
+        //    };
 
-            return View(newsModel);
-        }
+        //    return View(newsModel);
+        //}
 
 
 
@@ -77,11 +78,11 @@ namespace TestNewsSite.Controllers
             {
                 return View (newsViewModel);
             }
-            var _news = await _INewsRepository.GetNewIdAsync(newsViewModel.Id);
+            var _news = await _unitOfWork.News.GetNewsIdAsync(newsViewModel.Id);
 
             if(_news != null)
             {
-                await _INewsRepository.UpdateNewsAsunc(_news);
+                await _unitOfWork.News.UpdateNewsAsunc(_news);
             }
             return RedirectLocal(redirectUrl);
         }
@@ -99,7 +100,7 @@ namespace TestNewsSite.Controllers
                 
             };
 
-            await _INewsRepository.AddNewAsync(News);
+            await _unitOfWork.News.AddNewsAsync(News);
 
             return RedirectLocal(redirectUrl);
         }

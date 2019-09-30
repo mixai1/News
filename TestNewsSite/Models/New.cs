@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace TestNewsSite.Models
 {
-    public class New
+    public class New : DatabaseEntity
     {
-        public int Id { get; set; }
+       
         public string Heading { get; set; }
         public DateTime DateTime { get; set; }  
         public string Source { get; set; }

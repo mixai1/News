@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace TestNewsSite.Models
 {
-    public class Admin
+    public class Admin : DatabaseEntity
     {
-        public int Id { get; set; }
+        
         public string Name { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-
-
 
 
         public New news { get; set; }

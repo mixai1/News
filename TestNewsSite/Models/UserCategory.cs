@@ -1,20 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace TestNewsSite.Models
 {
-    public class UserCategory
+    public class UserCategory : DatabaseEntity
     {
-        [Key]
-        public int Id { get; set; }
+        
         public User user { get; set; }
-      
+        public Guid userId { get; set; }
 
 
         public Admin admin { get; set; }
+        public Guid adminId { get; set; }
        
     }
 }

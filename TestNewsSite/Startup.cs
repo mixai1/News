@@ -5,7 +5,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TestNewsSite.DataBase;
 using TestNewsSite.Interfaces;
-using TestNewsSite.Mocks;
+using TestNewsSite.Models;
+using TestNewsSite.Repository;
+using TestNewsSite.UnitofWork;
 
 namespace TestNewsSite
 {
@@ -22,7 +24,12 @@ namespace TestNewsSite
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddTransient<INewsRepository, NewsRepository>();
+            services.AddTransient<IGenericNewsRepository<Admin>,AdminRepository>();
+            services.AddTransient<IGenericNewsRepository<Comment>,CommentRepository>();
+            services.AddTransient<IGenericNewsRepository<New>,NewsRepository>();
+            services.AddTransient<IGenericNewsRepository<User>,UserRepository>();
+            services.AddTransient<IGenericNewsRepository<UserCategory>,UserCategoryRepository>();
+            services.AddTransient<IUnitOfWork,UnitOfWork>();
             services.AddDbContext<DBContext>(p => p.UseSqlServer(_configurationString.
                 GetConnectionString("DefaultConnection")));
         }
