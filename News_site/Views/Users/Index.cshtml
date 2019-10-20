@@ -1,0 +1,27 @@
+﻿@model IEnumerable<MyUsers>
+@{
+    ViewBag.Title = "List Users";
+}
+
+<a asp-action="Create">Add User</a>
+
+<table class="table">
+    <tr><th>Email</th><th>UserName</th><th></th></tr>
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>@user.Email</td>
+            <td>@user.UserName</td>
+            <td>
+                <form asp-action="Delete" asp-route-id="@user.Id" method="post">
+                    <a class="btn btn-sm btn-primary" asp-controller="Users" asp-action="Edit" asp-route-id="@user.Id">Edite</a>
+                    <a class="btn btn-sm btn-primary" asp-controller="Users" asp-action="ChangePassword" asp-route-id="@user.Id">ChangePassword</a>
+                    <button type="submit" class="btn btn-sm btn-danger">
+                        Delete
+                    </button>
+                </form>
+            </td>
+        </tr>
+    }
+</table>
+
