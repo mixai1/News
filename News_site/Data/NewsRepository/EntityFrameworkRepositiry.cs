@@ -1,10 +1,9 @@
 ﻿using Core;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
-using Data.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace Data.NewsRepository
 {
@@ -22,39 +21,46 @@ namespace Data.NewsRepository
 
 
 
-        public Task AddNewsAsync(T obj)
+        public async Task AddNewsAsync(T obj)
         {
-            throw new NotImplementedException();
+            await _table.AddAsync(obj);
+
         }
 
-        public Task AddNewsRangeAsync(IEnumerable<T> rangeObjs)
+        public async Task AddNewsRangeAsync(IEnumerable<T> rangeObjs)
         {
-            throw new NotImplementedException();
+            await _table.AddRangeAsync(rangeObjs);
         }
 
-        public System.Linq.IQueryable<T> AsQueryble()
+        public IQueryable<T> AsQueryble()
         {
-            throw new NotImplementedException();
+            return _table.AsQueryable();
         }
 
         public void DeleteNewsId(object id)
         {
-            throw new NotImplementedException();
+            var findresult = _table.Find(id);
+            _table.Remove(findresult);
+
         }
 
-        public Task<IEnumerable<T>> GetAllNewsAsync()
+        public async Task<IEnumerable<T>> GetAllNewsAsync()
         {
-            throw new NotImplementedException();
+            return await _table.ToListAsync();
         }
 
-        public Task<T> GetNewsIdAsync(object id)
+        public async Task<T> GetNewsIdAsync(object id)
         {
-            throw new NotImplementedException();
+            return await _table.FindAsync(id);
         }
 
         public Task UpdateNewsAsunc(T obj)
         {
-            throw new NotImplementedException();
+            //_table.Attach(obj);
+            // _context.Entry(obj).State = EntityState.Modified;
+
+
+            throw new Exception();
         }
     }
 }

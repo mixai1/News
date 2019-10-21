@@ -64,7 +64,7 @@ namespace Identity.Controllers
         }
 
         [HttpGet]
-       // [ValidateAntiForgeryToken]
+       [ValidateAntiForgeryToken]
         public IActionResult Login(string url = null)
         {
             return View(new LoginModel { Url = url});

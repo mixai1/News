@@ -1,4 +1,7 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
+using Data.Models;
+using Data.UnitOfWork;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using News_site.Models;
@@ -9,6 +12,7 @@ namespace News_site.Controllers
     {
         public IActionResult Index()
         {
+            
             return View();
         }
 
