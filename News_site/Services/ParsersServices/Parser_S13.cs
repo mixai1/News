@@ -3,24 +3,23 @@ using Data.UnitOfWork;
 using HtmlAgilityPack;
 using Services.InterfaceParserServes;
 using System.Collections.Generic;
-using System.Linq;
-using System.ServiceModel.Syndication;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using System.Xml;
+using System.Web;
+using System;
+using System.Linq;
 
 namespace Services.ParsersServices
 {
     public class Parser_S13 : IParser_S13
     {
         private readonly IUnitOfWork _unitOfWork;
-        private const string URL_S13 = @"http://s13.ru/rss";
+        private const string URL_S13 = @"http://s13.ru/";
 
         public Parser_S13(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
-
+         
 
         public async Task<bool> AddAsync(News news)
         {
@@ -49,58 +48,38 @@ namespace Services.ParsersServices
             return true;
         }
 
-        public IEnumerable<News> GetFromUrl()
-        {
-            var feedReader = XmlReader.Create(URL_S13);
-            SyndicationFeed feed = SyndicationFeed.Load(feedReader);
-
-            List<News> news = new List<News>();
-
-            if (feed != null)
-            {
-                foreach (var article in feed.Items)
-                {
-                    var text = GetTextOfNews(article.Links.FirstOrDefault().Uri.ToString());
-                    if (!string.IsNullOrEmpty(text))
-                    {
-                        news.Add(new News()
-                        {
-                            Heading = article.Title.Text,
-                            Source = article.Links.FirstOrDefault().Uri.ToString(),
-                            DateTime = article.PublishDate.UtcDateTime,
-                            Positive = 0,
-                            Content = text
-                        });
-                    }
-                }
-            }
-
-            return news;
-        }
-
-        public string GetTextOfNews(string url)
+        public async Task<IEnumerable<News>> GetNewsFromUrl()
         {
             var web = new HtmlWeb();
-            var doc = web.Load(url);
+            var doc = await web.LoadFromWebAsync(URL_S13);
 
-            var node = doc.DocumentNode.SelectNodes("//html/body/div/div/div/div/ul/li/div/div");
+            List<News> listnews = new List<News>();
 
-            if (node != null)
+            var rootNode = doc.DocumentNode.SelectNodes("//*[@class='cols news list']");
+            var sortNod = rootNode.Elements("li");
+            if(sortNod != null)
             {
-                var text = node.Skip(1).Take(1).FirstOrDefault().InnerText;
-                var mas = new string[] { "&ndash; ", "&ndash;", "&mdash; ", "&mdash;", "&nbsp; ", "&nbsp; ", "&nbsp;", "&laquo; ", "&laquo;", "&raquo; ", "&raquo;", "&quot;" };
-
-                foreach (var item in mas)
+                foreach (var item in sortNod.Take(3))
                 {
-                    text = text.Replace(item, "");
+                    var header = HttpUtility.HtmlDecode(item.SelectSingleNode(".//*[@class='title']").InnerText);
+                    var description = HttpUtility.HtmlDecode(item.SelectSingleNode(".//p").InnerText);
+                    var img = HttpUtility.HtmlDecode(item.SelectSingleNode(".//img").Attributes["src"].Value);
+                    listnews.Add(new News() 
+                    {
+                        Heading = header,
+                        Content = description, 
+                        Img = img,
+                        DateTime = DateTime.Now
+                    });
                 }
-
-                Regex.Replace(text, "<.*?>", string.Empty);
-
-                return text;
+                return listnews;
             }
+            
 
-            return "";
+            return listnews;
         }
+
+        
+        
     }
 }

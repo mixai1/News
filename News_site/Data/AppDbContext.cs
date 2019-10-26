@@ -1,12 +1,12 @@
-﻿using Data.Models;
-using Identity.Models;
+﻿using Data.IdentityModel;
+using Data.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 
 namespace Data
 {
-    public class AppDbContext : IdentityDbContext <MyUsers,MyRole,Guid>
+    public class AppDbContext : IdentityDbContext<MyUsers,MyRole,Guid>
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {

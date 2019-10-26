@@ -14,7 +14,8 @@ namespace Core
 
         Task<T> GetNewsIdAsync(object id);
 
-        void DeleteNewsId(object id);
+        Task DeleteNewsId(object id);
+
 
         Task UpdateNewsAsunc(T obj);
 

@@ -5,8 +5,9 @@ namespace Core
 {
     public interface IParser<T> where T : class
     {
-        IEnumerable<T> GetFromUrl();
+        Task<IEnumerable<T>> GetNewsFromUrl();
         Task<bool> AddAsync(T obj);
         Task<bool> AddRangeAsync(IEnumerable<T> objects);
+       
     }
 }

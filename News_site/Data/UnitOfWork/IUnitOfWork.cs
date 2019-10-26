@@ -1,6 +1,7 @@
 ﻿using Core;
 using Data.Models;
 using System;
+using System.Threading.Tasks;
 
 namespace Data.UnitOfWork
 {
@@ -12,6 +13,6 @@ namespace Data.UnitOfWork
 
 
 
-        void Save();
+        Task SaveAsync();
     }
 }

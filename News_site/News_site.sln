@@ -9,9 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Data\Data.csproj", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{2E548BE5-5CC4-4D37-AEDC-3754748D092D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Identity", "Identity\Identity.csproj", "{C41241D2-ECA4-4D74-B7B2-9F9DBE28B58A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{02E84F21-FF1B-416E-B9EF-4F69E25C301D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "Services\Services.csproj", "{02E84F21-FF1B-416E-B9EF-4F69E25C301D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,10 +29,6 @@ Global
 		{2E548BE5-5CC4-4D37-AEDC-3754748D092D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E548BE5-5CC4-4D37-AEDC-3754748D092D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E548BE5-5CC4-4D37-AEDC-3754748D092D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C41241D2-ECA4-4D74-B7B2-9F9DBE28B58A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C41241D2-ECA4-4D74-B7B2-9F9DBE28B58A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C41241D2-ECA4-4D74-B7B2-9F9DBE28B58A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C41241D2-ECA4-4D74-B7B2-9F9DBE28B58A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{02E84F21-FF1B-416E-B9EF-4F69E25C301D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{02E84F21-FF1B-416E-B9EF-4F69E25C301D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02E84F21-FF1B-416E-B9EF-4F69E25C301D}.Release|Any CPU.ActiveCfg = Release|Any CPU

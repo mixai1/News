@@ -1,31 +1,42 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics;
-using Data.Models;
+﻿using System.Threading.Tasks;
+using Data.IdentityModel;
 using Data.UnitOfWork;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using News_site.Models;
+using News_site.NewsViewModels;
 
 namespace News_site.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly UserManager<MyUsers> _userManager;
+
+        public HomeController(IUnitOfWork unitOfWork, UserManager<MyUsers> userManager)
         {
+            _userManager = userManager;
+            _unitOfWork = unitOfWork;
             
-            return View();
+        }
+        public async Task<IActionResult> Index()
+        {
+            var result = await _unitOfWork.News.GetAllNewsAsync();
+
+            var newsView = new IndexNewsModel()
+            {
+                News = result
+            };
+            return View(newsView);
         }
 
+     
         [Authorize]
         public IActionResult Privacy()
         {
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
     }
 }

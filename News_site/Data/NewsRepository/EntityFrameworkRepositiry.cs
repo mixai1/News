@@ -37,9 +37,9 @@ namespace Data.NewsRepository
             return _table.AsQueryable();
         }
 
-        public void DeleteNewsId(object id)
+        public async Task DeleteNewsId(object id)
         {
-            var findresult = _table.Find(id);
+            var findresult = await _table.FindAsync(id);   
             _table.Remove(findresult);
 
         }
@@ -62,5 +62,6 @@ namespace Data.NewsRepository
 
             throw new Exception();
         }
-    }
+
+    }   
 }

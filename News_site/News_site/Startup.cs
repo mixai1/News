@@ -1,9 +1,9 @@
 ﻿using Core;
 using Data;
+using Data.IdentityModel;
 using Data.Models;
 using Data.NewsRepository;
 using Data.UnitOfWork;
-using Identity.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -12,7 +12,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System.Data;
+using Services.EmailSenderServices;
+using Services.InterfaceParserServes;
+using Services.ParsersServices;
 
 namespace News_site
 {
@@ -58,7 +60,16 @@ namespace News_site
             });
 
 
+            services.AddTransient<IParser_S13, Parser_S13>();
+            services.AddTransient<IParser_TutBy, Parser_TutBy>();
+            services.AddTransient<IParser_Onliner, Parser_Onliner>();
+
+
+            services.AddTransient<IEmailSender, EmailSender>();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+
         }
 
 

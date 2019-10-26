@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Core;
 using Data.Models;
 
@@ -50,9 +51,9 @@ namespace Data.UnitOfWork
 
 
 
-        public void Save()
+        public async Task SaveAsync()
         {
-            _context.SaveChanges();
+           await _context.SaveChangesAsync();
         }
     }
 }

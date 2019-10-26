@@ -1,36 +1,84 @@
 ﻿using Data.Models;
+using Data.UnitOfWork;
+using HtmlAgilityPack;
 using Services.InterfaceParserServes;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace Services.ParsersServices
 {
-    class Parser_TutBy : IParser_TutBy
+    public class Parser_TutBy : IParser_TutBy
     {
-        public bool Add(News obj)
+        private readonly IUnitOfWork _unitOfWork;
+        private const string URL_TUTBY = @"";
+
+        public Parser_TutBy(IUnitOfWork unitOfWork)
         {
-            throw new NotImplementedException();
+            _unitOfWork = unitOfWork;
         }
 
-        public Task<bool> AddAsync(News obj)
+
+        public async Task<bool> AddAsync(News news)
         {
-            throw new NotImplementedException();
+            if (_unitOfWork.News != null)
+            {
+                await _unitOfWork.News.AddNewsAsync(news);
+
+                return true;
+            }
+            await _unitOfWork.News.AddNewsAsync(news);
+
+            return true;
         }
 
-        public bool AddRange(IEnumerable<News> objects)
+
+        public async Task<bool> AddRangeAsync(IEnumerable<News> news)
         {
-            throw new NotImplementedException();
+            foreach (var item in news)
+            {
+                if (_unitOfWork.News != null)
+                {
+                    await _unitOfWork.News.AddNewsAsync(item);
+                }
+            }
+
+            return true;
         }
 
-        public Task<bool> AddRangeAsync(IEnumerable<News> objects)
+        public async Task<IEnumerable<News>> GetNewsFromUrl()
         {
-            throw new NotImplementedException();
+            var web = new HtmlWeb();
+            var doc = await web.LoadFromWebAsync(URL_TUTBY);
+
+            List<News> listnews = new List<News>();
+
+            var rootNode = doc.DocumentNode.SelectNodes("//*[@class='cols news list']");
+            var sortNod = rootNode.Elements("li");
+            if (sortNod != null)
+            {
+                foreach (var item in sortNod.Take(3))
+                {
+                    var header = HttpUtility.HtmlDecode(item.SelectSingleNode(".//*[@class='title']").InnerText);
+                    var description = HttpUtility.HtmlDecode(item.SelectSingleNode(".//p").InnerText);
+                    var img = HttpUtility.HtmlDecode(item.SelectSingleNode(".//img").Attributes["src"].Value);
+                    listnews.Add(new News()
+                    {
+                        Heading = header,
+                        Content = description,
+                        Img = img,
+                        DateTime = DateTime.Now
+                    });
+                }
+                return listnews;
+            }
+
+
+            return listnews;
         }
 
-        public IEnumerable<News> GetFromUrl()
-        {
-            throw new NotImplementedException();
-        }
+
     }
 }
