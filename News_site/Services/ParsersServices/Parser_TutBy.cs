@@ -1,12 +1,12 @@
-﻿using Data.Models;
-using Data.UnitOfWork;
+﻿using Entity.NewsModels;
 using HtmlAgilityPack;
-using Services.InterfaceParserServes;
+using Core.InterfaceParserServes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
+using Core;
 
 namespace Services.ParsersServices
 {

@@ -2,23 +2,8 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-<h1 class="display-4" align="center">Welcome </h1>
-@if (User.Identity.IsAuthenticated)
-{
-    <p>Authorize: @User.Identity.IsAuthenticated</p>
-    <p>UserName: @User.Identity.Name</p>
+@*<h1 class="display-4" align="center">Welcome </h1>*@
 
-    <form method="post" asp-controller="Account" asp-action="LogOff">
-        <input type="submit" value="Exit" />
-    </form>
-}
-else
-{
-    <a class="btn btn-sm btn-primary" asp-controller="Account" asp-action="Login">Login</a>
-    <br>
-    <a class="btn btn-sm btn-primary" asp-controller="Account" asp-action="Register">Register</a>
-
-}
 
 @if (Model.News.Count() == 0)
 {
@@ -30,28 +15,34 @@ else
 
 else
 {
-
-    <table class="table">
-        <tr><th>Title</th><th>News</th><th></th></tr>
-        @foreach (var news in Model.News)
-        {
-
-            <tr>
-                <td>@news.Heading @news.Img</td>
-                <td>@news.Content</td>
-                <td>
+    @foreach (var news in Model.News)
+    {
+        <div class="col s m6">
+            <div class="card">
+                <div class="card-image">
+                    <img src="https://materializecss.com/images/sample-1.jpg">
+                    <span class="card-title">@news.Heading</span>
+                </div>
+                <div class="card-content">
+                    <p>@news.Content </p>
+                </div>
+                <div class="card-action">
+                    <a href="#">This is a link</a>
                     <form asp-action="Delete" asp-controller="News" asp-route-id="@news.Id" method="post">
                         <a class="btn btn-sm btn-primary" asp-controller="#" asp-action="#" asp-route-id="@news.Id">Edite News</a>
                         <a class="btn btn-sm btn-primary" asp-controller="#" asp-action="#" asp-route-id="@news.Id">Add Comment </a>
-                        <button type="submit" class="btn btn-sm btn-danger">
-                            Delete
-                        </button>
+                        <button type="submit" class="btn btn-sm btn-danger">Delete </button>
                     </form>
-                </td>
-            </tr>
-        }
-    </table>
-   
+                </div>
+            </div>
+            @*<form asp-action="Delete" asp-controller="News" asp-route-id="@news.Id" method="post">
+                <a class="btn btn-sm btn-primary" asp-controller="#" asp-action="#" asp-route-id="@news.Id">Edite News</a>
+                <a class="btn btn-sm btn-primary" asp-controller="#" asp-action="#" asp-route-id="@news.Id">Add Comment </a>
+                <button type="submit" class="btn btn-sm btn-danger">Delete </button>
+            </form>*@
+        </div>
+
+     }  
 }
 <a class="btn btn-sm btn-primary" asp-controller="News" asp-action="AddNews">Add News</a>
 <div class="text-center">

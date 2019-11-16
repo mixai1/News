@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Data.UnitOfWork;
 using Microsoft.AspNetCore.Mvc;
-using Services.InterfaceParserServes;
+using Core.InterfaceParserServes;
 using Microsoft.AspNetCore.Authorization;
+using Core;
 
 namespace News_site.Controllers
 {

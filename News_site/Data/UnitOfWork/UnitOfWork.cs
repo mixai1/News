@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Core;
-using Data.Models;
+using Entity;
+using Entity.NewsModels;
 
 namespace Data.UnitOfWork
 {

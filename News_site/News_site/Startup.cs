@@ -1,9 +1,9 @@
 ﻿using Core;
-using Data;
-using Data.IdentityModel;
-using Data.Models;
 using Data.NewsRepository;
 using Data.UnitOfWork;
+using Entity;
+using Entity.IdetityModels;
+using Entity.NewsModels;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -12,9 +12,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Services.EmailSenderServices;
-using Services.InterfaceParserServes;
+using Core.InterfaceParserServes;
 using Services.ParsersServices;
+using Services.EmailSenderServices;
 
 namespace News_site
 {

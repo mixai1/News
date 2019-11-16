@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using Data.IdentityModel;
+using Entity.IdetityModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using News_site.Areas.IdentityViewModel;

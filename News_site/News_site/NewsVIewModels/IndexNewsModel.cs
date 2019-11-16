@@ -1,4 +1,4 @@
-﻿using Data.Models;
+﻿using Entity.NewsModels;
 using System.Collections.Generic;
 
 namespace News_site.NewsViewModels

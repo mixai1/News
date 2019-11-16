@@ -1,4 +1,4 @@
-﻿using Data.IdentityModel;
+﻿using Entity.IdetityModels;
 using System;
 using System.Collections.Generic;
 

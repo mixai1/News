@@ -1,4 +1,5 @@
-﻿using Data.Models;
+﻿using Entity;
+using Entity.NewsModels;
 
 namespace Data.NewsRepository
 {

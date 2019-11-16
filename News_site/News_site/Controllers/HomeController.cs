@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
-using Data.IdentityModel;
-using Data.UnitOfWork;
+using Core;
+using Entity.IdetityModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
