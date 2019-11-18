@@ -28,7 +28,7 @@ namespace Data.UnitOfWork
 
         public IGenericNewsRepository<News> News => _newsRepository;
 
-
+    
 
         private bool disposed = false;
 

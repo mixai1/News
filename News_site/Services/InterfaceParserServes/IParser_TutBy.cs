@@ -1,5 +1,5 @@
 ﻿using Core;
-using Data.Models;
+using Entity.NewsModels;
 
 namespace Services.InterfaceParserServes
 {

@@ -1,4 +1,4 @@
-﻿using Data.IdentityModel;
+﻿using Entity.IdetityModels;
 using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
 

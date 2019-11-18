@@ -16,7 +16,7 @@ namespace WebApiCQRS.Querys.CommentsQuerys
         }
         public async Task<Comments> Handle(GetCommentsById request, CancellationToken cancellationToken)
         {
-            return await _dbContext.Comments.FirstOrDefaultAsync(c => c.CommentId == request.CommentId);
+            return await _dbContext.Comments.FirstOrDefaultAsync(c => c.Id == request.CommentId);
                     
         }
     }
