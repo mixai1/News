@@ -5,14 +5,13 @@ namespace WebApiCQRS.Querys.UsersQuerys
 {
     public class DoesExistUser : IRequest<Users>
     {
-        public DoesExistUser(string email, string password)
+        public DoesExistUser(string email)
         {
 
             Email = email;
-            Password = password;
         }
 
         public string Email { get; }
-        public string Password { get; }
+
     }
 }

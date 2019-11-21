@@ -23,13 +23,13 @@ namespace Data.NewsRepository
 
 
 
-        public async Task AddNewsAsync(T obj)
+        public async Task AddAsync(T obj)
         {
             await _table.AddAsync(obj);
 
         }
 
-        public async Task AddNewsRangeAsync(IEnumerable<T> rangeObjs)
+        public async Task AddRangeAsync(IEnumerable<T> rangeObjs)
         {
             await _table.AddRangeAsync(rangeObjs);
         }
@@ -39,31 +39,36 @@ namespace Data.NewsRepository
             return _table.AsQueryable();
         }
 
-        public async Task DeleteNewsId(object id)
+        public async Task DeleteId(object id)
         {
-            var findresult = await _table.FindAsync(id);   
+            var findresult = await _table.FindAsync(id);
             _table.Remove(findresult);
 
         }
 
-        public async Task<IEnumerable<T>> GetAllNewsAsync()
+        public async Task<IEnumerable<T>> GetAllAsync()
         {
             return await _table.ToListAsync();
         }
 
-        public async Task<T> GetNewsIdAsync(object id)
+        public async Task<T> GetIdAsync(object id)
         {
             return await _table.FindAsync(id);
         }
 
-        public Task UpdateNewsAsunc(T obj)
+        public void Update(T obj)
         {
-            //_table.Attach(obj);
-            // _context.Entry(obj).State = EntityState.Modified;
 
+            _table.Attach(obj);
+            _context.Entry(obj).State = EntityState.Modified;
 
-            throw new Exception();
         }
 
-    }   
+        public IEnumerable<T> Where(Func<T, bool> predicate)
+        {
+            return _table.Where(predicate);
+        }
+
+       
+    }
 }

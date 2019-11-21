@@ -7,15 +7,10 @@ namespace WebApiCQRS.Commands.CommentsCommands
 {
     public class AddComment : IRequest<bool>
     {
-        public Guid CommentId { get; set; }
-        public string Body { get; set; }
-        public string Author { get; set; }
+        public string Body { get; }
+        public string Author { get; }
+
+       
     }
-    public class MappingProfile : Profile
-    {
-        public MappingProfile()
-        {
-            CreateMap<AddComment, Comments>();
-        }
-    }
+ 
 }

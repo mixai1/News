@@ -14,7 +14,7 @@ namespace WebApiNews_site.Controllers
         /// 
         /// </summary>
         /// <returns>string</returns>
-        [HttpGet]
+        [HttpGet(Name="Get")]
         public ActionResult<IEnumerable<string>> Get()
         {
             return new string[] { "value1", "value2" };

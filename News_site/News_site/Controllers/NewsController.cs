@@ -42,7 +42,7 @@ namespace News_site.Controllers
         [Authorize(Roles = "admin")]
         public async Task<IActionResult> Delete(Guid id)
         {
-            await _unitOfWork.News.DeleteNewsId(id);
+            await _unitOfWork.News.DeleteId(id);
             await _unitOfWork.SaveAsync();
 
             return RedirectToAction("Index", "Home");

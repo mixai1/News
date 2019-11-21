@@ -8,5 +8,10 @@ namespace WebApiCQRS.Querys.CommentsQuerys
     public class GetCommentsById : IRequest<Comments>
     {
         public Guid CommentId { get; set; }
+
+        public GetCommentsById(Guid id)
+        {
+            id = CommentId;
+        }
     }
 }

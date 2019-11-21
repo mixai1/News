@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -6,18 +7,19 @@ namespace Core
 {
     public interface IGenericNewsRepository<T> where T : class
     {
-        Task AddNewsAsync(T obj);
+        Task AddAsync(T obj);
 
-        Task AddNewsRangeAsync(IEnumerable<T> rangeObjs);
+        Task AddRangeAsync(IEnumerable<T> rangeObjs);
 
-        Task<IEnumerable<T>> GetAllNewsAsync();
+        Task<IEnumerable<T>> GetAllAsync();
 
-        Task<T> GetNewsIdAsync(object id);
+        Task<T> GetIdAsync(object id);
 
-        Task DeleteNewsId(object id);
+        Task DeleteId(object id);
 
+        IEnumerable<T> Where(Func<T, bool> predicate);
 
-        Task UpdateNewsAsunc(T obj);
+        void Update(T obj);
 
         IQueryable<T> AsQueryble();
     }

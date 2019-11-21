@@ -16,7 +16,7 @@ namespace WebApiCQRS.Querys.UsersQuerys
         }
         public async Task<Users> Handle(DoesExistUser request, CancellationToken cancellationToken)
         {
-            return await _dbContext.Users.FirstOrDefaultAsync(u => u.Email == request.Email && u.Password == request.Password);
+            return await _dbContext.Users.FirstOrDefaultAsync(u => u.Email == request.Email);
 
         }
 

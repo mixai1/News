@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Hangfire;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -34,14 +35,14 @@ namespace WebApiNews_site.Extensions
                 });
             });
         }
-        //public static void ConfigureIIS(this IServiceCollection service)
-        //{
-        //    service.Configure<IISOptions>(options =>
-        //    {
+        public static void AddHangfire(this IServiceCollection services, IConfiguration configuration)
+        {
 
-        //    });
-        //}
-        
+            services.AddHangfire(options => options.
+            UseSqlServerStorage(configuration.
+            GetConnectionString("DefaultConnection")));
+        }
+
 
         public static void ConfigureSqlContext(this IServiceCollection services, IConfiguration configuration)
         {

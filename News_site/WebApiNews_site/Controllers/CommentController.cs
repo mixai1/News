@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebApiCQRS.Commands.CommentsCommands;
@@ -21,10 +22,11 @@ namespace WebApiNews_site.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetCommentsById(Guid id)
+        public async Task<IActionResult> GetCommentsById([FromBody] GetCommentsById commentsById)
         {
-            var comment = await _mediator.Send(new GetCommentsById() { CommentId = id });
-            if(comment == null)
+            
+            var comment = await _mediator.Send(commentsById);
+            if (comment == null)
             {
                 return NotFound();
             }
@@ -32,17 +34,22 @@ namespace WebApiNews_site.Controllers
             return Ok(comment);
         }
 
+        [AllowAnonymous]  
         [HttpPost]
+        [Route("addcomment")]
         public async Task<IActionResult> PostComment([FromBody] AddComment comment)
         {
+            var eee = comment;
             var result = await _mediator.Send(comment);
             if (result)
             {
                 return StatusCode(201);
             }
-           
-             return BadRequest();
-            
+
+            return BadRequest();
+
         }
+
+        
     }
 }

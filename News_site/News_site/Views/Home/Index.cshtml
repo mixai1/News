@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-@*<h1 class="display-4" align="center">Welcome </h1>*@
+
 
 
 @if (Model.News.Count() == 0)
@@ -12,12 +12,11 @@
     <h1>No news now</h1>
 }
 
-
 else
 {
     @foreach (var news in Model.News)
     {
-        <div class="col s m6">
+        <div class="col xl m6">
             <div class="card">
                 <div class="card-image">
                     <img src="https://materializecss.com/images/sample-1.jpg">
@@ -26,24 +25,60 @@ else
                 <div class="card-content">
                     <p>@news.Content </p>
                 </div>
+                <div class="card-content" id="result"></div>
                 <div class="card-action">
-                    <a href="#">This is a link</a>
                     <form asp-action="Delete" asp-controller="News" asp-route-id="@news.Id" method="post">
-                        <a class="btn btn-sm btn-primary" asp-controller="#" asp-action="#" asp-route-id="@news.Id">Edite News</a>
-                        <a class="btn btn-sm btn-primary" asp-controller="#" asp-action="#" asp-route-id="@news.Id">Add Comment </a>
-                        <button type="submit" class="btn btn-sm btn-danger">Delete </button>
+                        @if (User.IsInRole("admin"))
+                        {
+                            <button type="submit" class="btn btn-sm btn-danger">Delete </button>
+                        }
                     </form>
+                    <form name="form" style="display:none" id="form" onsubmit="return false">
+                        <textarea id="textarea" name="comment"></textarea>
+                        <input type="submit" name="send" id="done" value="Add"/>
+                    </form>
+                    <a class="btn btn-sm btn-primary" href="#" id="add_comment" onclick="return false">Add Comment </a>
+
                 </div>
             </div>
-            @*<form asp-action="Delete" asp-controller="News" asp-route-id="@news.Id" method="post">
-                <a class="btn btn-sm btn-primary" asp-controller="#" asp-action="#" asp-route-id="@news.Id">Edite News</a>
-                <a class="btn btn-sm btn-primary" asp-controller="#" asp-action="#" asp-route-id="@news.Id">Add Comment </a>
-                <button type="submit" class="btn btn-sm btn-danger">Delete </button>
-            </form>*@
         </div>
 
-     }  
+
+        @*<script src="~/lib/Microsoft.jQuery.Unobtrusive.Ajax/jquery.unobtrusive-ajax.min.js"></script>*@
+        
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $(document).on('click', '#add_comment', function () {
+                    var forms = $('#form');
+                    forms.css('display', 'block');
+                    $('#add_comment').replaceWith(forms);
+                });
+                $(document).on('click', '#done', function () {
+                    var comment = $('#textarea').val();
+                    $.ajax({
+                        url: "https://localhost:5001/comment/addcomment",
+                        type: "POST",
+                        data: comment,
+                        contentType: "text; charset=utf-8",
+                        dataType: "json",
+                        success: function (response) {
+                            var result = $('#result');
+                            result.empty();
+                            result.appendTo('<p>'+ response +'</p>');
+                        }
+
+                    });
+
+                });
+            });
+        </script>
+
+
+    }
 }
+
+
 <a class="btn btn-sm btn-primary" asp-controller="News" asp-action="AddNews">Add News</a>
 <div class="text-center">
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>

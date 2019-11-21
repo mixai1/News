@@ -36,7 +36,7 @@ namespace WebApiNews_site.Controllers
 
 
         [AllowAnonymous]
-        [HttpPost(Name ="token")]
+        [HttpPost]
         public async Task<IActionResult> CreatToken([FromBody]CreateUser model)
         {
             var identity = await Authenticate(model.Email, model.Password);
@@ -69,8 +69,9 @@ namespace WebApiNews_site.Controllers
 
 
         [AllowAnonymous]
-        [HttpPost(Name ="registr")]
-        public async Task<IActionResult> Registr([FromBody] CreateUser user)
+        [Route("register")]
+        [HttpPost]
+        public async Task<IActionResult> Registr([FromBody]CreateUser user)
         {
             var result = await _mediator.Send(user);
             if (result)
@@ -86,7 +87,7 @@ namespace WebApiNews_site.Controllers
         private async Task<ClaimsIdentity> Authenticate( string userName, string password)
         {
             ClaimsIdentity identity = null;
-            var userExist = new DoesExistUser(userName, password);
+            var userExist = new DoesExistUser(userName);
             var user = await _mediator.Send(userExist);  
             if (user != null)
             {

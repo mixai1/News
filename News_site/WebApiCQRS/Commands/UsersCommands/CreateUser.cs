@@ -9,11 +9,6 @@ namespace WebApiCQRS.Commands.UsersCommands
         public string Email { get; set; }
         public string Password { get; set; }
     }
-    public class MapingProfile : Profile
-    {
-        public MapingProfile()
-        {
-            CreateMap<CreateUser, Users>();
-        }
-    }
+
+   
 }

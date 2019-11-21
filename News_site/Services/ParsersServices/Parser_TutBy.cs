@@ -25,11 +25,11 @@ namespace Services.ParsersServices
         {
             if (_unitOfWork.News != null)
             {
-                await _unitOfWork.News.AddNewsAsync(news);
+                await _unitOfWork.News.AddAsync(news);
 
                 return true;
             }
-            await _unitOfWork.News.AddNewsAsync(news);
+            await _unitOfWork.News.AddAsync(news);
 
             return true;
         }
@@ -41,7 +41,7 @@ namespace Services.ParsersServices
             {
                 if (_unitOfWork.News != null)
                 {
-                    await _unitOfWork.News.AddNewsAsync(item);
+                    await _unitOfWork.News.AddAsync(item);
                 }
             }
 

@@ -22,7 +22,7 @@ namespace News_site.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var result = await _unitOfWork.News.GetAllNewsAsync();
+            var result = await _unitOfWork.News.GetAllAsync();
 
             var newsView = new IndexNewsModel()
             {
