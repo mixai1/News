@@ -21,10 +21,17 @@ namespace WebApiNews_site.Controllers
             _mediator = mediator;
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetCommentsById([FromBody] GetCommentsById commentsById)
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="commentsById"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("/GetCommentById")]
+        public async Task<IActionResult> GetCommentsById([FromBody]GetCommentsById commentsById)
         {
-            
+
             var comment = await _mediator.Send(commentsById);
             if (comment == null)
             {
@@ -34,10 +41,16 @@ namespace WebApiNews_site.Controllers
             return Ok(comment);
         }
 
-        [AllowAnonymous]  
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="comment"></param>
+        /// <returns></returns>
+        [AllowAnonymous]
         [HttpPost]
-        [Route("addcomment")]
-        public async Task<IActionResult> PostComment([FromBody] AddComment comment)
+        [Route("/addcomment")]
+        public async Task<IActionResult> PostComment([FromBody]AddComment comment)
         {
             var eee = comment;
             var result = await _mediator.Send(comment);
@@ -50,6 +63,6 @@ namespace WebApiNews_site.Controllers
 
         }
 
-        
+
     }
 }

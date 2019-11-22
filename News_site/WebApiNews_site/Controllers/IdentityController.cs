@@ -34,9 +34,14 @@ namespace WebApiNews_site.Controllers
             return Ok("Method Do");
         }
 
-
+        /// <summary>
+        /// Post api/token
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [AllowAnonymous]
         [HttpPost]
+        [Route("/token")]
         public async Task<IActionResult> CreatToken([FromBody]CreateUser model)
         {
             var identity = await Authenticate(model.Email, model.Password);
@@ -69,7 +74,7 @@ namespace WebApiNews_site.Controllers
 
 
         [AllowAnonymous]
-        [Route("register")]
+        [Route("/register")] 
         [HttpPost]
         public async Task<IActionResult> Registr([FromBody]CreateUser user)
         {

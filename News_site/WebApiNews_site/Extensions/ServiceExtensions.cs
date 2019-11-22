@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Swagger;
 using System.Text;
 using WebApiEntity;
@@ -26,12 +27,12 @@ namespace WebApiNews_site.Extensions
         public static void ConfigureSwagger(this IServiceCollection services)
         {
             services.AddSwaggerGen(c=> {
-                c.SwaggerDoc("v1",new Info
+                c.SwaggerDoc("v1",new OpenApiInfo
                 {
                     Version = "v1",
-                    Title = "API",
-                    Description = "API v1",
-                    TermsOfService = "None"
+                    Title = "api",
+                    Description = "API v1"
+                    
                 });
             });
         }

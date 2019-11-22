@@ -35,7 +35,7 @@ namespace WebApiNews_site
             services.AddHangfire(Configuration);
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+       
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
@@ -51,6 +51,11 @@ namespace WebApiNews_site
             app.UseAuthentication();
             app.UseCors("CorsPolicy");
             app.UseSwagger();
+            app.UseSwaggerUI(c => 
+            {
+               
+                c.SwaggerEndpoint("/swagger/v1/swagger.json","Web(V1)");
+            });
             app.UseHttpsRedirection();
             app.UseHangfireDashboard("/admin/hangfire");
             app.UseMvc();
