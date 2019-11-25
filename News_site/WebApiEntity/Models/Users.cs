@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace WebApiEntity.Models
 {
-    public class Users
+    public class IdentityUsers
     {
         public Guid Id { get; set; }
         [Required]

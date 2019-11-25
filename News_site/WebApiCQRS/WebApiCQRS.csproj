@@ -14,4 +14,8 @@
     <ProjectReference Include="..\WebApiEntity\WebApiEntity.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Commands\UsersCommands\" />
+  </ItemGroup>
+
 </Project>

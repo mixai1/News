@@ -28,7 +28,7 @@ namespace WebApiNews_site.Controllers
         /// <param name="commentsById"></param>
         /// <returns></returns>
         [HttpGet]
-        [Route("/GetCommentById")]
+        [Route("GetCommentById")]
         public async Task<IActionResult> GetCommentsById([FromBody]GetCommentsById commentsById)
         {
 
@@ -49,10 +49,9 @@ namespace WebApiNews_site.Controllers
         /// <returns></returns>
         [AllowAnonymous]
         [HttpPost]
-        [Route("/addcomment")]
+        [Route("addcomment")]
         public async Task<IActionResult> PostComment([FromBody]AddComment comment)
         {
-            var eee = comment;
             var result = await _mediator.Send(comment);
             if (result)
             {

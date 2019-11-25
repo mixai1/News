@@ -2,6 +2,7 @@
 using Hangfire;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -55,6 +56,7 @@ namespace WebApiNews_site.Extensions
         {
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(option =>
             {
+                option.SaveToken = true;
                 option.RequireHttpsMetadata = false;
                 option.TokenValidationParameters = new TokenValidationParameters
                 {
@@ -78,6 +80,18 @@ namespace WebApiNews_site.Extensions
         public static void ConfigureMediatR(this IServiceCollection services)
         {
             services.AddMediatR(typeof(Startup).Assembly);
+        }
+        public static void ConfigureIdentity(this IServiceCollection services)
+        {
+            services.AddIdentity<IdentityUser, IdentityRole>(op =>
+            {
+                op.Password.RequireDigit = false;
+                op.Password.RequiredLength = 5;
+                op.Password.RequireUppercase = false;
+                op.Password.RequireNonAlphanumeric = false;
+
+            }).AddEntityFrameworkStores<WebApiDbContext>()
+              .AddDefaultTokenProviders();
         }
     }
 }

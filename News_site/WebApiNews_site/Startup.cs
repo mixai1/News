@@ -33,6 +33,7 @@ namespace WebApiNews_site
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.ConfigureMediatR();
             services.AddHangfire(Configuration);
+            services.ConfigureIdentity();
         }
 
        
@@ -47,6 +48,7 @@ namespace WebApiNews_site
              
                 app.UseHsts();
             }
+            
             app.UseHangfireServer();
             app.UseAuthentication();
             app.UseCors("CorsPolicy");
