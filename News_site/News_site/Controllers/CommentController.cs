@@ -30,15 +30,13 @@ namespace News_site.Controllers
                 DateTime = DateTime.SpecifyKind(
               DateTime.UtcNow,
               DateTimeKind.Utc),
-
-                News = _unitOfWork.News.Where(i => i.Id.Equals(commentModel.Id)).FirstOrDefault()
             };
 
 
             await _unitOfWork.Comments.AddAsync(comment);
             await _unitOfWork.SaveAsync();
 
-            return Json(comment);
+            return Json(comment.Content);
         }
 
         [HttpPost]
