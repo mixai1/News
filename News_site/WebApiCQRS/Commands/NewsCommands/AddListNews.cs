@@ -9,7 +9,12 @@ namespace WebApiCQRS.Commands.NewsCommands
 {
     public class AddListNews : IRequest<bool>
     {
-        public List<News> NewsList { get; set; }
+        public IEnumerable<News> NewsList { get; set; }
+
+        public AddListNews(IEnumerable<News> newsList)
+        {
+            NewsList = newsList;
+        }
     }
 }
 

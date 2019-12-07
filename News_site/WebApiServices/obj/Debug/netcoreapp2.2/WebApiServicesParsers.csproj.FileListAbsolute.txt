@@ -1,0 +1,12 @@
+C:\Users\пк\Documents\GitHub\News\News\News\News_site\WebApiServices\bin\Debug\netcoreapp2.2\WebApiServicesParsers.deps.json
+C:\Users\пк\Documents\GitHub\News\News\News\News_site\WebApiServices\bin\Debug\netcoreapp2.2\WebApiServicesParsers.dll
+C:\Users\пк\Documents\GitHub\News\News\News\News_site\WebApiServices\bin\Debug\netcoreapp2.2\Core.dll
+C:\Users\пк\Documents\GitHub\News\News\News\News_site\WebApiServices\bin\Debug\netcoreapp2.2\Entity.dll
+C:\Users\пк\Documents\GitHub\News\News\News\News_site\WebApiServices\bin\Debug\netcoreapp2.2\WebApiEntity.dll
+C:\Users\пк\Documents\GitHub\News\News\News\News_site\WebApiServices\bin\Debug\netcoreapp2.2\Core.pdb
+C:\Users\пк\Documents\GitHub\News\News\News\News_site\WebApiServices\bin\Debug\netcoreapp2.2\WebApiEntity.pdb
+C:\Users\пк\Documents\GitHub\News\News\News\News_site\WebApiServices\bin\Debug\netcoreapp2.2\Entity.pdb
+C:\Users\пк\Documents\GitHub\News\News\News\News_site\WebApiServices\obj\Debug\netcoreapp2.2\WebApiServicesParsers.csprojAssemblyReference.cache
+C:\Users\пк\Documents\GitHub\News\News\News\News_site\WebApiServices\obj\Debug\netcoreapp2.2\WebApiServicesParsers.AssemblyInfoInputs.cache
+C:\Users\пк\Documents\GitHub\News\News\News\News_site\WebApiServices\obj\Debug\netcoreapp2.2\WebApiServicesParsers.AssemblyInfo.cs
+C:\Users\пк\Documents\GitHub\News\News\News\News_site\WebApiServices\obj\Debug\netcoreapp2.2\WebApiServicesParsers.csproj.CopyComplete

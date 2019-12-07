@@ -7,15 +7,12 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="9.0.0" />
     <PackageReference Include="MediatR" Version="7.0.0" />
+    <PackageReference Include="Serilog" Version="2.9.1-dev-01154" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj" />
     <ProjectReference Include="..\WebApiEntity\WebApiEntity.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Commands\UsersCommands\" />
   </ItemGroup>
 
 </Project>

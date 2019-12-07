@@ -12,8 +12,6 @@ namespace Services.ParsersServices
 {
     public class Parser_Onliner : IParser_Onliner
     {
-
-
         private readonly IUnitOfWork _unitOfWork;
         private const string URL_ONLINER = @"https://people.onliner.by/";
 

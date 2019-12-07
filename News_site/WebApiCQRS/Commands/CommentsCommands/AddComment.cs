@@ -7,9 +7,12 @@ namespace WebApiCQRS.Commands.CommentsCommands
 {
     public class AddComment : IRequest<bool>
     {
-        public string Body { get; }
-        public string Author { get; }
+        public Comments Comments { get; set; }
 
+        public AddComment(Comments comments)
+        {
+            Comments = comments;
+        }
        
     }
  

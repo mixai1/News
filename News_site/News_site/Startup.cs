@@ -30,9 +30,6 @@ namespace News_site
             Configuration = configuration;
         }
 
-        
-
-
         public void ConfigureServices(IServiceCollection services)
         {
            services.AddDbContext<AppDbContext>(option =>

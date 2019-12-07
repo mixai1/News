@@ -11,8 +11,6 @@ namespace WebApiEntity
 
         }
 
-        
-
         public DbSet<News> News { get; set; }
         public DbSet<Comments> Comments { get; set; }
     }

@@ -8,6 +8,5 @@ namespace Core
         Task<IEnumerable<T>> GetNewsFromUrl();
         Task<bool> AddAsync(T obj);
         Task<bool> AddRangeAsync(IEnumerable<T> objects);
-       
     }
 }

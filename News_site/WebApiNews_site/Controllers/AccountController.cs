@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using WebApiCQRS.Querys.UsersQuerys;
+using Serilog;
 using WebApiEntity.ModelsDto;
 
 namespace WebApiNews_site.Controllers
@@ -37,41 +37,69 @@ namespace WebApiNews_site.Controllers
             return Ok("Method Do");
         }
 
-
-
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [AllowAnonymous]
         [Route("register")]
         [HttpPost]
         public async Task<object> Register([FromBody] RegisterDto model)
         {
-            var user = new IdentityUser
+            try
             {
-                UserName = model.Email,
-                Email = model.Email
-            };
-            var result = await _userManager.CreateAsync(user, model.Password);
+                var user = new IdentityUser
+                {
+                    UserName = model.Email,
+                    Email = model.Email
+                };
+                var result = await _userManager.CreateAsync(user, model.Password);
 
-            if (result.Succeeded)
+                if (result.Succeeded)
+                {
+                    await _signInManager.SignInAsync(user, false);
+                    Log.Information("Action Register => completed successfully");
+                    return await CreateJWTToken(model.Email, user);
+                }
+            }
+            catch (Exception ex)
             {
-                await _signInManager.SignInAsync(user, false);
-                return await CreateJWTToken(model.Email, user);
+
+                Log.Error($"Action Register => {ex.Message}");
             }
 
             return BadRequest();
+
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("login")]
         public async Task<object> Login([FromBody] LoginDto model)
         {
-            var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, false, false);
-
-            if (result.Succeeded)
+            try
             {
-                var appUser = _userManager.Users.SingleOrDefault(r => r.Email == model.Email);
-                return await CreateJWTToken(model.Email, appUser);
+                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, false, false);
+
+                if (result.Succeeded)
+                {
+                    var appUser = _userManager.Users.SingleOrDefault(r => r.Email == model.Email);
+                    Log.Information("Action Login => completed successfully");
+                    return await CreateJWTToken(model.Email, appUser);
+                   
+                }
             }
+            catch (Exception ex)
+            {
+
+                Log.Error($"Action Login =>{ex.Message}");
+            }
+          
 
             return BadRequest();
         }

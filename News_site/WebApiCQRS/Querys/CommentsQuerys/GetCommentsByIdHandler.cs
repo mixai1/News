@@ -1,5 +1,7 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using WebApiEntity;
@@ -16,7 +18,16 @@ namespace WebApiCQRS.Querys.CommentsQuerys
         }
         public async Task<Comments> Handle(GetCommentsById request, CancellationToken cancellationToken)
         {
-            return await _dbContext.Comments.FirstOrDefaultAsync(c => c.Id == request.CommentId);
+            try
+            {
+                Log.Information("GetCommentById => completed successfully");
+                return await _dbContext.Comments.FirstOrDefaultAsync(c => c.Id == request.Id);
+            }
+            catch (Exception ex)
+            {
+                Log.Error($"GetCommentById {ex.Message}");
+                return null;
+            }
                     
         }
     }

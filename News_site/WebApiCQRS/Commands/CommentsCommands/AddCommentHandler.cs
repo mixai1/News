@@ -1,42 +1,35 @@
-﻿using AutoMapper;
-using MediatR;
+﻿using MediatR;
+using Serilog;
 using System.Threading;
 using System.Threading.Tasks;
 using WebApiEntity;
-using WebApiEntity.Models;
 
 namespace WebApiCQRS.Commands.CommentsCommands
 {
     public class AddCommentHandler : IRequestHandler<AddComment, bool>
     {
         private readonly WebApiDbContext _dbContext;
-        private readonly IMapper _mapper;
-        public AddCommentHandler(WebApiDbContext dbContext, IMapper mapper)
+
+        public AddCommentHandler(WebApiDbContext dbContext)
         {
             _dbContext = dbContext;
-            _mapper = mapper;
         }
 
         public async Task<bool> Handle(AddComment request, CancellationToken cancellationToken)
         {
             try
             {
-                await _dbContext.AddAsync(_mapper.Map<Comments>(request));
+                await _dbContext.Comments.AddAsync(request.Comments,cancellationToken);
                 await _dbContext.SaveChangesAsync(cancellationToken);
-                //Logger
+                Log.Information("WebApiCQRS,AddComment => completed successfully");
                 return true;
             }
             catch (System.Exception ex)
             {
-
-                //Logger.ex.masegge
+                Log.Error($"WebApiCQRS,AddComment => {ex.Message}");
                 return false;
             }
-           
-           
-           
 
         }
     }
-
 }
