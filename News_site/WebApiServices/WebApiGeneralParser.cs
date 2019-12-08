@@ -22,7 +22,9 @@ namespace WebApiServicesParsers
 
         }
 
-        List<News> AllNewsList { get; }
+        public List<News> AllNewsListWithoutRepetition => AllNewsList;
+
+        private List<News> AllNewsList { get; }
 
         public async Task AddNewsGeneralListNews()
         {

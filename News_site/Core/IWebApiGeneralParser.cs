@@ -6,6 +6,7 @@ namespace Core
 {
     public interface IWebApiGeneralParser
     {
+        List<News> AllNewsListWithoutRepetition { get; }
         Task AddNewsGeneralListNews();
     }
 }

@@ -6,6 +6,9 @@ namespace WebApiServicesAnalysisPositivity
 {
    public class SendTextToApiLemmatization
     {
+        public SendTextToApiLemmatization()
+        {
 
+        }
     }
 }
