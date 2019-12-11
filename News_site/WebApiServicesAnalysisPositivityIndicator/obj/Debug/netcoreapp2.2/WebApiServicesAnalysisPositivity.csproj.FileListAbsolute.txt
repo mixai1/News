@@ -8,3 +8,8 @@ C:\Users\пк\Documents\GitHub\News\News\News\News_site\WebApiServicesAnalysisPo
 C:\Users\пк\Documents\GitHub\News\News\News\News_site\WebApiServicesAnalysisPositivityIndicator\obj\Debug\netcoreapp2.2\WebApiServicesAnalysisPositivity.AssemblyInfoInputs.cache
 C:\Users\пк\Documents\GitHub\News\News\News\News_site\WebApiServicesAnalysisPositivityIndicator\obj\Debug\netcoreapp2.2\WebApiServicesAnalysisPositivity.AssemblyInfo.cs
 C:\Users\пк\Documents\GitHub\News\News\News\News_site\WebApiServicesAnalysisPositivityIndicator\obj\Debug\netcoreapp2.2\WebApiServicesAnalysisPositivity.csproj.CopyComplete
+C:\Users\пк\Documents\GitHub\News\News\News\News_site\WebApiServicesAnalysisPositivityIndicator\bin\Debug\netcoreapp2.2\WebApiServicesAnalysisPositivity.pdb
+C:\Users\пк\Documents\GitHub\News\News\News\News_site\WebApiServicesAnalysisPositivityIndicator\bin\Debug\netcoreapp2.2\WebApiEntity.dll
+C:\Users\пк\Documents\GitHub\News\News\News\News_site\WebApiServicesAnalysisPositivityIndicator\bin\Debug\netcoreapp2.2\WebApiEntity.pdb
+C:\Users\пк\Documents\GitHub\News\News\News\News_site\WebApiServicesAnalysisPositivityIndicator\obj\Debug\netcoreapp2.2\WebApiServicesAnalysisPositivity.dll
+C:\Users\пк\Documents\GitHub\News\News\News\News_site\WebApiServicesAnalysisPositivityIndicator\obj\Debug\netcoreapp2.2\WebApiServicesAnalysisPositivity.pdb

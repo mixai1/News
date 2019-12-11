@@ -22,16 +22,19 @@ namespace WebApiNews_site.Controllers
         private readonly IConfiguration _config;
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
         public AccountController(IConfiguration config, UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager)
+            SignInManager<IdentityUser> signInManager, RoleManager<IdentityRole> roleManager)
         {
             _config = config;
             _userManager = userManager;
             _signInManager = signInManager;
+            _roleManager = roleManager;
         }
 
-        [Authorize]
+        [Authorize(Roles ="admin")]
         [HttpGet]
+        [Route("do")]
         public IActionResult Do()
         {
             return Ok("Method Do");
@@ -49,28 +52,38 @@ namespace WebApiNews_site.Controllers
         {
             try
             {
-                var user = new IdentityUser
+                if (ModelState.IsValid)
                 {
-                    UserName = model.Email,
-                    Email = model.Email
-                };
-                var result = await _userManager.CreateAsync(user, model.Password);
+                    var user = new IdentityUser
+                    {
+                        UserName = model.UserName,
+                        Email = model.Email
+                    };
+                    var result = await _userManager.CreateAsync(user, model.Password);
 
-                if (result.Succeeded)
-                {
-                    await _signInManager.SignInAsync(user, false);
-                    Log.Information("Action Register => completed successfully");
-                    return await CreateJWTToken(model.Email, user);
+                    if (result.Succeeded)
+                    {
+                        if (model.UserName == "admin")
+                        {
+                            if (await _roleManager.FindByNameAsync("admin") == null)
+                            {
+                                await _roleManager.CreateAsync(new IdentityRole() { Name = "admin" });
+                            }
+                            await _userManager.AddToRoleAsync(user, "admin");
+                        }
+                        await _signInManager.SignInAsync(user, false);
+                        Log.Information("Action Register => completed successfully");
+                        return await CreateJWTToken(model.Email, user);
+                    }
                 }
+                return StatusCode(200);
             }
             catch (Exception ex)
             {
-
                 Log.Error($"Action Register => {ex.Message}");
+                return BadRequest();
             }
-
-            return BadRequest();
-
+            
         }
 
         /// <summary>
@@ -91,7 +104,7 @@ namespace WebApiNews_site.Controllers
                     var appUser = _userManager.Users.SingleOrDefault(r => r.Email == model.Email);
                     Log.Information("Action Login => completed successfully");
                     return await CreateJWTToken(model.Email, appUser);
-                   
+
                 }
             }
             catch (Exception ex)
@@ -99,12 +112,12 @@ namespace WebApiNews_site.Controllers
 
                 Log.Error($"Action Login =>{ex.Message}");
             }
-          
+
 
             return BadRequest();
         }
 
-        
+
         private async Task<object> CreateJWTToken(string email, IdentityUser user)
         {
             var claims = new List<Claim>

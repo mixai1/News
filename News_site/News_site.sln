@@ -19,9 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApiCQRS", "WebApiCQRS\We
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApiEntity", "WebApiEntity\WebApiEntity.csproj", "{27BD9099-902C-47C9-B5A1-DC06348785DF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApiServicesParsers", "WebApiServices\WebApiServicesParsers.csproj", "{99250C1A-643A-4B8E-AFD2-65A65541CC7A}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApiServicesAnalysisPositivity", "WebApiServicesAnalysisPositivityIndicator\WebApiServicesAnalysisPositivity.csproj", "{635BC4B9-5B8B-4676-A27B-CF716BE08137}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiNewsRepository", "NewsRepository\WebApiNewsRepository.csproj", "{6D16DBC2-881F-40D9-9366-E8EBEC789283}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,14 +61,14 @@ Global
 		{27BD9099-902C-47C9-B5A1-DC06348785DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{27BD9099-902C-47C9-B5A1-DC06348785DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{27BD9099-902C-47C9-B5A1-DC06348785DF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{99250C1A-643A-4B8E-AFD2-65A65541CC7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{99250C1A-643A-4B8E-AFD2-65A65541CC7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{99250C1A-643A-4B8E-AFD2-65A65541CC7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{99250C1A-643A-4B8E-AFD2-65A65541CC7A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{635BC4B9-5B8B-4676-A27B-CF716BE08137}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{635BC4B9-5B8B-4676-A27B-CF716BE08137}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{635BC4B9-5B8B-4676-A27B-CF716BE08137}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{635BC4B9-5B8B-4676-A27B-CF716BE08137}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D16DBC2-881F-40D9-9366-E8EBEC789283}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D16DBC2-881F-40D9-9366-E8EBEC789283}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D16DBC2-881F-40D9-9366-E8EBEC789283}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D16DBC2-881F-40D9-9366-E8EBEC789283}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

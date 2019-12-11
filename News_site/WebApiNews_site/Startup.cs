@@ -1,4 +1,5 @@
-﻿using Hangfire;
+﻿using Core;
+using Hangfire;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -67,6 +68,21 @@ namespace WebApiNews_site
             app.UseHttpsRedirection();
             app.UseHangfireDashboard("/admin/hangfire");
             app.UseMvc();
+
+
+
+            var addNewsinDb = app.ApplicationServices.GetService<IAddNewsInDataBase>();
+            var getNewsFromParsers = app.ApplicationServices.GetService<IWebApiGeneralParser>();
+
+
+            RecurringJob.AddOrUpdate(
+               () => addNewsinDb.AddNewsRangeDatabase(),
+               Cron.Hourly);
+
+            RecurringJob.AddOrUpdate(
+               () => getNewsFromParsers.AddNewsGeneralListNews(),
+               Cron.Hourly);
+
         }
     }
 }

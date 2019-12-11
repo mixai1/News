@@ -18,10 +18,14 @@ namespace WebApiNews_site.Controllers
             _generalParser = generalParser;
         }
 
+
+        [HttpGet]
+        [Route("GetNews")]
         public async Task<ActionResult> Get()
         {
+          
            // _generalParser.AllNewsListWithoutRepetition
-            return Ok();
+            return Ok(_generalParser.AllNewsListWithoutRepetition);
         }
     }
 }

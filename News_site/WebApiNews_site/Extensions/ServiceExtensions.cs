@@ -10,10 +10,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Services.WebApiParsersServices;
 using System.Text;
 using WebApiEntity;
-using WebApiEntity.Models;
-using WebApiServicesParsers;
+using WebApiNewsRepository;
 
 namespace WebApiNews_site.Extensions
 {
@@ -30,13 +30,14 @@ namespace WebApiNews_site.Extensions
         }
         public static void ConfigureSwagger(this IServiceCollection services)
         {
-            services.AddSwaggerGen(c=> {
-                c.SwaggerDoc("v1",new OpenApiInfo
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
                     Title = "api/news",
                     Description = "API v1"
-                    
+
                 });
             });
         }
@@ -58,7 +59,15 @@ namespace WebApiNews_site.Extensions
 
         public static void ConfigureJWT(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(option =>
+
+            services.AddAuthentication(opt =>
+            {
+                opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                opt.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+                opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+
+            })
+                .AddJwtBearer(option =>
             {
                 option.SaveToken = true;
                 option.RequireHttpsMetadata = false;
@@ -72,7 +81,8 @@ namespace WebApiNews_site.Extensions
                     ValidAudience = configuration["JwtSettings:Issuer"],
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JwtSettings:Key"]))
 
-                };   
+               
+                };
             });
         }
 
@@ -105,6 +115,7 @@ namespace WebApiNews_site.Extensions
             services.AddTransient<IWebApiParser_S13, WebApiParser_S13>();
             services.AddTransient<IWebApiParser_TutBy, WebApiParser_TutBy>();
             services.AddTransient<IWebApiGeneralParser, WebApiGeneralParser>();
+            services.AddTransient<IExistNewsInDataBase, ExistNewsInDataBase>();
         }
     }
 }

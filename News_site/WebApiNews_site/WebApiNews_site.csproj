@@ -23,9 +23,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj" />
+    <ProjectReference Include="..\NewsRepository\WebApiNewsRepository.csproj" />
+    <ProjectReference Include="..\Services\Services.csproj" />
     <ProjectReference Include="..\WebApiCQRS\WebApiCQRS.csproj" />
     <ProjectReference Include="..\WebApiEntity\WebApiEntity.csproj" />
-    <ProjectReference Include="..\WebApiServices\WebApiServicesParsers.csproj" />
   </ItemGroup>
 
 </Project>

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace WebApiEntity.Models
 {
-    public class News
+    public class News : IEquatable<News>
     {
         public Guid Id { get; set; }
         public string Header { get; set; }
@@ -11,5 +11,16 @@ namespace WebApiEntity.Models
         public string Img { get; set; }
         public DateTime CreatedDate { get; set; }
         public ICollection<Comments> Comments { get; set; }
+
+        public bool Equals(News other)
+        {
+            if (other is null)
+                return false;
+
+            return this.Header == other.Header && this.Body == other.Body;
+        }
+
+        public override bool Equals(object obj) => Equals(obj as News);
+        public override int GetHashCode() => (Header, Body).GetHashCode();
     }
 }
