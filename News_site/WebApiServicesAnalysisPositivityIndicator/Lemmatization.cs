@@ -27,8 +27,8 @@ namespace WebApiServicesAnalysisPositivity
             {
                 string textBody = news.Body.ToString();
                 int summPositivity = 0;
-                double numberOfmaches = 1;
-               // double index = 0;
+                double numberOfmaches = 0;
+                // double index = 0;
                 var result = await _getFromStringToJson.GetJsonResponsToFromNews(textBody);
                 if (!String.IsNullOrEmpty(result))
                 {
@@ -41,16 +41,16 @@ namespace WebApiServicesAnalysisPositivity
                             if (item.Equals(i.Key))
                             {
                                 summPositivity += i.Value;
-                                numberOfmaches = 0 ;
                                 numberOfmaches += 1;
                             }
                         }
 
                     }
                     Log.Information($"GetIndexOfPositivity News Positivity => completed successfully");
-                   double  number = summPositivity / numberOfmaches;
-                    const int  accuracy = 4;
-                   double index = Math.Round(number - number % (double)(Math.Pow(0.1, (double)accuracy)), accuracy);
+                    numberOfmaches = numberOfmaches == 0 ? 1 : numberOfmaches;
+                    double number = summPositivity / numberOfmaches;
+                    const int accuracy = 4;
+                    double index = Math.Round(number, accuracy);
                     if (index.Equals(0.0000))
                     {
                         return 0.0001;
