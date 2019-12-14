@@ -1,15 +1,11 @@
-﻿using Core;
+﻿using Core.InterfaceWebApiNewsRepository;
 using MediatR;
 using Serilog;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 using WebApiCQRS.Commands.NewsCommands;
-using WebApiCQRS.Querys.NewsQuerys;
-using WebApiEntity.Models;
 
-namespace NewsRepository
+namespace WebApiNewsRepository
 {
     public class AddNewsInDataBase : IAddNewsInDataBase
     {
@@ -23,13 +19,12 @@ namespace NewsRepository
             _existNews = existNews;
         }
 
-
         public async Task AddNewsRangeDatabase()
         {
             try
             {
                 var resultNews = await _existNews.ExceptNews();
-                if(resultNews != null)
+                if (resultNews != null)
                 {
                     Log.Information("Method AddNewsRangeDataBase => ");
                     await _mediator.Send(new AddListNews(resultNews));
@@ -40,7 +35,7 @@ namespace NewsRepository
             {
 
                 Log.Error($"Method AddNewsRangeDataBase => {ex.Message}");
-           
+
             }
         }
     }

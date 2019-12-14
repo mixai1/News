@@ -1,6 +1,6 @@
-﻿using Core;
+﻿using Core.InterfaceWebApiNewsRepository;
+using Core.InterfaceWebApiServicesAnalysisPositivity;
 using Hangfire;
-using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -19,7 +19,7 @@ namespace WebApiNews_site
             Configuration = configuration;
 
             Log.Logger = new LoggerConfiguration()
-                .Enrich.WithProperty("Version","1.0.0")
+                .Enrich.WithProperty("Version", "1.0.0")
                 .MinimumLevel.Debug()
                 .WriteTo.Console()
                 .WriteTo.File("logs\\log.txt", rollingInterval: RollingInterval.Day)
@@ -42,10 +42,12 @@ namespace WebApiNews_site
             services.AddHangfire(Configuration);
             services.ConfigureIdentity();
             services.AddTarnsientParsers();
+            services.AddTarnsientNewsRepository();
+            services.AddTarnsientAnalysisPositivity();
 
         }
 
-       
+
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
@@ -56,14 +58,14 @@ namespace WebApiNews_site
             {
                 app.UseHsts();
             }
-            
+
             app.UseHangfireServer();
             app.UseAuthentication();
             app.UseCors("CorsPolicy");
             app.UseSwagger();
-            app.UseSwaggerUI(c => 
+            app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json","Web(V1)");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Web(V1)");
             });
             app.UseHttpsRedirection();
             app.UseHangfireDashboard("/admin/hangfire");
@@ -72,16 +74,9 @@ namespace WebApiNews_site
 
 
             var addNewsinDb = app.ApplicationServices.GetService<IAddNewsInDataBase>();
-            var getNewsFromParsers = app.ApplicationServices.GetService<IWebApiGeneralParser>();
-
-
-            RecurringJob.AddOrUpdate(
-               () => addNewsinDb.AddNewsRangeDatabase(),
-               Cron.Hourly);
-
-            RecurringJob.AddOrUpdate(
-               () => getNewsFromParsers.AddNewsGeneralListNews(),
-               Cron.Hourly);
+            var addNewsPositiv= app.ApplicationServices.GetService<INewsAddPositivity>();
+            RecurringJob.AddOrUpdate(() => addNewsinDb.AddNewsRangeDatabase(),Cron.Hourly());
+            RecurringJob.AddOrUpdate(() => addNewsPositiv.AddPositivInNews(),Cron.Hourly());
 
         }
     }

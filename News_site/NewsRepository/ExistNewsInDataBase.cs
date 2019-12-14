@@ -1,5 +1,4 @@
-﻿using Core;
-using MediatR;
+﻿using MediatR;
 using System.Linq;
 using System;
 using System.Collections.Generic;
@@ -7,6 +6,8 @@ using System.Threading.Tasks;
 using WebApiCQRS.Querys.NewsQuerys;
 using WebApiEntity.Models;
 using Serilog;
+using Core.InterfaceWebApiNewsRepository;
+using Core.InterfaceWebApiServicesParsers;
 
 namespace WebApiNewsRepository
 {
@@ -25,8 +26,8 @@ namespace WebApiNewsRepository
         {
             try
             {
+                var AllNewsFromParsers = await _generalParser.AddNewsGeneralListNews();
                 var AllNewsFromDb = await _mediator.Send(new AllNews());
-                var AllNewsFromParsers = _generalParser.AllNewsListWithoutRepetition;
 
                 var exceptNews = AllNewsFromParsers.Except<News>(AllNewsFromDb);
 

@@ -21,7 +21,10 @@ namespace WebApiCQRS.Querys.NewsQuerys
 
         public async Task<IEnumerable<News>> Handle(AllNews request, CancellationToken cancellationToken)
         {
-            return await _dbContext.News.ToListAsync<News>(cancellationToken);
+            var result = await _dbContext.News.ToListAsync<News>(cancellationToken);
+
+            return result;
+
         }
     }
 }

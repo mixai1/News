@@ -213,6 +213,8 @@ namespace WebApiEntity.Migrations
 
                     b.Property<string>("Img");
 
+                    b.Property<double>("IndexOfPositive");
+
                     b.HasKey("Id");
 
                     b.ToTable("News");

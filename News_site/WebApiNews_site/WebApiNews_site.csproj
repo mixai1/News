@@ -28,6 +28,7 @@
     <ProjectReference Include="..\Services\Services.csproj" />
     <ProjectReference Include="..\WebApiCQRS\WebApiCQRS.csproj" />
     <ProjectReference Include="..\WebApiEntity\WebApiEntity.csproj" />
+    <ProjectReference Include="..\WebApiServicesAnalysisPositivityIndicator\WebApiServicesAnalysisPositivity.csproj" />
   </ItemGroup>
 
 </Project>

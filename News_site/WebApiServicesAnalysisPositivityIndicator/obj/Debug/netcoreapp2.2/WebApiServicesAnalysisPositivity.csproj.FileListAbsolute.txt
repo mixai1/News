@@ -13,3 +13,5 @@ C:\Users\пк\Documents\GitHub\News\News\News\News_site\WebApiServicesAnalysisPo
 C:\Users\пк\Documents\GitHub\News\News\News\News_site\WebApiServicesAnalysisPositivityIndicator\bin\Debug\netcoreapp2.2\WebApiEntity.pdb
 C:\Users\пк\Documents\GitHub\News\News\News\News_site\WebApiServicesAnalysisPositivityIndicator\obj\Debug\netcoreapp2.2\WebApiServicesAnalysisPositivity.dll
 C:\Users\пк\Documents\GitHub\News\News\News\News_site\WebApiServicesAnalysisPositivityIndicator\obj\Debug\netcoreapp2.2\WebApiServicesAnalysisPositivity.pdb
+C:\Users\пк\Documents\GitHub\News\News\News\News_site\WebApiServicesAnalysisPositivityIndicator\bin\Debug\netcoreapp2.2\WebApiCQRS.dll
+C:\Users\пк\Documents\GitHub\News\News\News\News_site\WebApiServicesAnalysisPositivityIndicator\bin\Debug\netcoreapp2.2\WebApiCQRS.pdb

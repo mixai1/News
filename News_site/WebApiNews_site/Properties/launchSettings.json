@@ -19,7 +19,7 @@
     },
     "WebApiNews_site": {
       "commandName": "Project",
-      "launchBrowser": false,
+      "launchBrowser": true,
       "launchUrl": "api/news/getnews",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"

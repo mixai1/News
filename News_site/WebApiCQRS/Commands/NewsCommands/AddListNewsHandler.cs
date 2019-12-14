@@ -23,13 +23,13 @@ namespace WebApiCQRS.Commands.NewsCommands
             {
                 await _dbContext.News.AddRangeAsync(request.NewsList, cancellationToken);
                 await _dbContext.SaveChangesAsync(cancellationToken);
-                Log.Information("WebApiCQRS,AddListNews => completed successfully");
+                Log.Information("WebApiCQRS, AddListNews => completed successfully");
                 return true;
 
             }
             catch (Exception ex)
             {
-                Log.Error($"WebApiCQRS,AddListNews => {ex.Message}");
+                Log.Error($"WebApiCQRS, AddListNews => {ex.Message}");
                 return false;
             }
                

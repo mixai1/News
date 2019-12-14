@@ -1,0 +1,70 @@
+﻿using Core.InterfaceWebApiServicesAnalysisPositivity;
+using Serilog;
+using System;
+using System.Threading.Tasks;
+using WebApiEntity.Models;
+
+namespace WebApiServicesAnalysisPositivity
+{
+    public class Lemmatization : ILemmatization
+    {
+        private readonly IConvertJsonAFINNToDictinary _convertJson;
+        private readonly IGetFromStringToJsonResponsFromApi _getFromStringToJson;
+        private readonly IDeserializeRespons _deserialize;
+        public Lemmatization(
+            IConvertJsonAFINNToDictinary convertJson,
+            IGetFromStringToJsonResponsFromApi getFromStringToJson,
+            IDeserializeRespons deserialize)
+        {
+            _convertJson = convertJson;
+            _deserialize = deserialize;
+            _getFromStringToJson = getFromStringToJson;
+        }
+
+        public async Task<double> GetIndexOfPositivity(News news)
+        {
+            try
+            {
+                string textBody = news.Body.ToString();
+                int summPositivity = 0;
+                double numberOfmaches = 1;
+               // double index = 0;
+                var result = await _getFromStringToJson.GetJsonResponsToFromNews(textBody);
+                if (!String.IsNullOrEmpty(result))
+                {
+                    var resultText = _deserialize.Deserialize(result);
+                    var resultAfinnDictionary = await _convertJson.ConvertJsonToDictionary();
+                    foreach (var item in resultText)
+                    {
+                        foreach (var i in resultAfinnDictionary)
+                        {
+                            if (item.Equals(i.Key))
+                            {
+                                summPositivity += i.Value;
+                                numberOfmaches = 0 ;
+                                numberOfmaches += 1;
+                            }
+                        }
+
+                    }
+                    Log.Information($"GetIndexOfPositivity News Positivity => completed successfully");
+                   double  number = summPositivity / numberOfmaches;
+                    const int  accuracy = 4;
+                   double index = Math.Round(number - number % (double)(Math.Pow(0.1, (double)accuracy)), accuracy);
+                    if (index.Equals(0.0000))
+                    {
+                        return 0.0001;
+                    }
+                    return index;
+                }
+                return 0.0001;
+            }
+            catch (Exception ex)
+            {
+                Log.Error($"GetIndexOfPositivity =>{ex.Message}");
+                return 0.0001;
+
+            }
+        }
+    }
+}

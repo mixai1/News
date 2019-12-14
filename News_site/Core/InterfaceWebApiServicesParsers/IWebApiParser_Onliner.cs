@@ -1,9 +1,10 @@
-﻿using WebApiEntity.Models;
+﻿using System.Collections.Generic;
+using WebApiEntity.Models;
 
 namespace Core.InterfaceWebApiServicesParsers
 {
-    public interface IWebApiParser_Onliner : IWebApiParser<News>
+    public interface IWebApiParser_Onliner 
     {
-
+        IEnumerable<News> GetNewsFromUrl();
     }
 }

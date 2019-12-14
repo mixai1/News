@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
-using Core;
+using Core.InterfaceWebApiNewsRepository;
+using Core.InterfaceWebApiServicesAnalysisPositivity;
 using Core.InterfaceWebApiServicesParsers;
 using Hangfire;
 using MediatR;
@@ -11,9 +12,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Services.WebApiParsersServices;
+using System;
 using System.Text;
 using WebApiEntity;
 using WebApiNewsRepository;
+using WebApiServicesAnalysisPositivity;
 
 namespace WebApiNews_site.Extensions
 {
@@ -81,7 +84,7 @@ namespace WebApiNews_site.Extensions
                     ValidAudience = configuration["JwtSettings:Issuer"],
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JwtSettings:Key"]))
 
-               
+
                 };
             });
         }
@@ -93,8 +96,10 @@ namespace WebApiNews_site.Extensions
 
         public static void ConfigureMediatR(this IServiceCollection services)
         {
-            services.AddMediatR(typeof(Startup).Assembly);
+            var assembly = AppDomain.CurrentDomain.Load("WebApiCQRS");
+            services.AddMediatR(assembly);
             services.AddTransient<IMediator, Mediator>();
+
         }
 
         public static void ConfigureIdentity(this IServiceCollection services)
@@ -115,7 +120,20 @@ namespace WebApiNews_site.Extensions
             services.AddTransient<IWebApiParser_S13, WebApiParser_S13>();
             services.AddTransient<IWebApiParser_TutBy, WebApiParser_TutBy>();
             services.AddTransient<IWebApiGeneralParser, WebApiGeneralParser>();
+
+        }
+        public static void AddTarnsientNewsRepository(this IServiceCollection services)
+        {
             services.AddTransient<IExistNewsInDataBase, ExistNewsInDataBase>();
+            services.AddTransient<IAddNewsInDataBase, AddNewsInDataBase>();
+        }
+        public static void AddTarnsientAnalysisPositivity(this IServiceCollection services)
+        {
+            services.AddTransient<IConvertJsonAFINNToDictinary, ConvertJsonAFINNToDictinary>();
+            services.AddTransient<IGetFromStringToJsonResponsFromApi, GetFromStringToJsonResponsFromApi>();
+            services.AddTransient<IDeserializeRespons, DeserializeRespons>();
+            services.AddTransient<ILemmatization, Lemmatization>();
+            services.AddTransient<INewsAddPositivity, NewsAddPositivity>();
         }
     }
 }

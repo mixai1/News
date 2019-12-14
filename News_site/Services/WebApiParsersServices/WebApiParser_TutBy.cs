@@ -10,7 +10,7 @@ namespace Services.WebApiParsersServices
     {
         private const string URL_TUTBY = @"";
 
-        public Task<IEnumerable<News>> GetNewsFromUrl()
+        public IEnumerable<News> GetNewsFromUrl()
         {
             throw new NotImplementedException();
         }
