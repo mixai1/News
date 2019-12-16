@@ -1,0 +1,741 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\XUnitTestWebApiNews_site\\XUnitTestWebApiNews_site.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\Core\\Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\Core\\Core.csproj",
+        "projectName": "Core",
+        "projectPath": "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\Core\\Core.csproj",
+        "packagesPath": "C:\\Users\\пк\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\пк\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {
+              "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\Entity\\Entity.csproj": {
+                "projectPath": "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\Entity\\Entity.csproj"
+              },
+              "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\WebApiEntity\\WebApiEntity.csproj": {
+                "projectPath": "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\WebApiEntity\\WebApiEntity.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\Entity\\Entity.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\Entity\\Entity.csproj",
+        "projectName": "Entity",
+        "projectPath": "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\Entity\\Entity.csproj",
+        "packagesPath": "C:\\Users\\пк\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\Entity\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\пк\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.AspNet.Identity.Core": {
+              "target": "Package",
+              "version": "[2.2.2, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[2.2.6, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[2.2.6, )"
+            },
+            "Microsoft.Extensions.Identity.Stores": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\NewsRepository\\WebApiNewsRepository.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\NewsRepository\\WebApiNewsRepository.csproj",
+        "projectName": "WebApiNewsRepository",
+        "projectPath": "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\NewsRepository\\WebApiNewsRepository.csproj",
+        "packagesPath": "C:\\Users\\пк\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\NewsRepository\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\пк\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {
+              "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\Core\\Core.csproj": {
+                "projectPath": "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\Core\\Core.csproj"
+              },
+              "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\WebApiCQRS\\WebApiCQRS.csproj": {
+                "projectPath": "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\WebApiCQRS\\WebApiCQRS.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "MediatR": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\Services\\Services.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\Services\\Services.csproj",
+        "projectName": "Services",
+        "projectPath": "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\Services\\Services.csproj",
+        "packagesPath": "C:\\Users\\пк\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\Services\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\пк\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {
+              "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\Core\\Core.csproj": {
+                "projectPath": "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\Core\\Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "HtmlAgilityPack": {
+              "target": "Package",
+              "version": "[1.11.16, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "Serilog": {
+              "target": "Package",
+              "version": "[2.9.1-dev-01154, )"
+            },
+            "System.ServiceModel.Syndication": {
+              "target": "Package",
+              "version": "[4.6.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\WebApiCQRS\\WebApiCQRS.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\WebApiCQRS\\WebApiCQRS.csproj",
+        "projectName": "WebApiCQRS",
+        "projectPath": "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\WebApiCQRS\\WebApiCQRS.csproj",
+        "packagesPath": "C:\\Users\\пк\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\WebApiCQRS\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\пк\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {
+              "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\Core\\Core.csproj": {
+                "projectPath": "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\Core\\Core.csproj"
+              },
+              "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\WebApiEntity\\WebApiEntity.csproj": {
+                "projectPath": "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\WebApiEntity\\WebApiEntity.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "MediatR": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "Serilog": {
+              "target": "Package",
+              "version": "[2.9.1-dev-01154, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\WebApiEntity\\WebApiEntity.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\WebApiEntity\\WebApiEntity.csproj",
+        "projectName": "WebApiEntity",
+        "projectPath": "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\WebApiEntity\\WebApiEntity.csproj",
+        "packagesPath": "C:\\Users\\пк\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\WebApiEntity\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\пк\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[2.2.6, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[2.2.6, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\WebApiNews_site\\WebApiNews_site.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\WebApiNews_site\\WebApiNews_site.csproj",
+        "projectName": "WebApiNews_site",
+        "projectPath": "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\WebApiNews_site\\WebApiNews_site.csproj",
+        "packagesPath": "C:\\Users\\пк\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\WebApiNews_site\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\пк\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {
+              "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\Core\\Core.csproj": {
+                "projectPath": "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\Core\\Core.csproj"
+              },
+              "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\NewsRepository\\WebApiNewsRepository.csproj": {
+                "projectPath": "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\NewsRepository\\WebApiNewsRepository.csproj"
+              },
+              "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\Services\\Services.csproj": {
+                "projectPath": "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\Services\\Services.csproj"
+              },
+              "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\WebApiCQRS\\WebApiCQRS.csproj": {
+                "projectPath": "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\WebApiCQRS\\WebApiCQRS.csproj"
+              },
+              "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\WebApiEntity\\WebApiEntity.csproj": {
+                "projectPath": "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\WebApiEntity\\WebApiEntity.csproj"
+              },
+              "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\WebApiServicesAnalysisPositivityIndicator\\WebApiServicesAnalysisPositivity.csproj": {
+                "projectPath": "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\WebApiServicesAnalysisPositivityIndicator\\WebApiServicesAnalysisPositivity.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Hangfire.AspNetCore": {
+              "target": "Package",
+              "version": "[1.7.7, )"
+            },
+            "Hangfire.Core": {
+              "target": "Package",
+              "version": "[1.7.7, )"
+            },
+            "Hangfire.Dashboard.Authorization": {
+              "target": "Package",
+              "version": "[2.1.0, )"
+            },
+            "Hangfire.SqlServer": {
+              "target": "Package",
+              "version": "[1.7.7, )"
+            },
+            "MediatR": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "MediatR.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.AspNetCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.AspNetCore.Razor.Design": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[2.2.4, )"
+            },
+            "Serilog": {
+              "target": "Package",
+              "version": "[2.9.1-dev-01154, )"
+            },
+            "Serilog.Sinks.Console": {
+              "target": "Package",
+              "version": "[4.0.0-dev-00834, )"
+            },
+            "Serilog.Sinks.File": {
+              "target": "Package",
+              "version": "[4.1.0, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[5.0.0-rc4, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\WebApiServicesAnalysisPositivityIndicator\\WebApiServicesAnalysisPositivity.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\WebApiServicesAnalysisPositivityIndicator\\WebApiServicesAnalysisPositivity.csproj",
+        "projectName": "WebApiServicesAnalysisPositivity",
+        "projectPath": "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\WebApiServicesAnalysisPositivityIndicator\\WebApiServicesAnalysisPositivity.csproj",
+        "packagesPath": "C:\\Users\\пк\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\WebApiServicesAnalysisPositivityIndicator\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\пк\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {
+              "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\Core\\Core.csproj": {
+                "projectPath": "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\Core\\Core.csproj"
+              },
+              "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\WebApiCQRS\\WebApiCQRS.csproj": {
+                "projectPath": "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\WebApiCQRS\\WebApiCQRS.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "MediatR": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.3, )"
+            },
+            "Serilog": {
+              "target": "Package",
+              "version": "[2.9.1-dev-01154, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\XUnitTestWebApiNews_site\\XUnitTestWebApiNews_site.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\XUnitTestWebApiNews_site\\XUnitTestWebApiNews_site.csproj",
+        "projectName": "XUnitTestWebApiNews_site",
+        "projectPath": "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\XUnitTestWebApiNews_site\\XUnitTestWebApiNews_site.csproj",
+        "packagesPath": "C:\\Users\\пк\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\XUnitTestWebApiNews_site\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\пк\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.0": {
+            "projectReferences": {
+              "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\WebApiEntity\\WebApiEntity.csproj": {
+                "projectPath": "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\WebApiEntity\\WebApiEntity.csproj"
+              },
+              "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\WebApiNews_site\\WebApiNews_site.csproj": {
+                "projectPath": "C:\\Users\\пк\\Documents\\GitHub\\News\\News\\News\\News_site\\WebApiNews_site\\WebApiNews_site.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.0": {
+          "dependencies": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[16.2.0, )"
+            },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.13.1, )"
+            },
+            "coverlet.collector": {
+              "target": "Package",
+              "version": "[1.0.1, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.4.0, )"
+            },
+            "xunit.runner.visualstudio": {
+              "target": "Package",
+              "version": "[2.4.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

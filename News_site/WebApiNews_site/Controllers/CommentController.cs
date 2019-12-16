@@ -14,45 +14,46 @@ using WebApiEntity.ModelsDto;
 
 namespace WebApiNews_site.Controllers
 {
-    [Authorize]
+   // [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class CommentController : ControllerBase
     {
         private readonly IMediator _mediator;
         private readonly IMapper _mapper;
-        private readonly UserManager<IdentityUser> _userManager;
-        public CommentController(IMediator mediator, UserManager<IdentityUser> userManager, IMapper mapper)
+       // private readonly UserManager<IdentityUser> _userManager;
+        public CommentController(IMediator mediator/*, UserManager<IdentityUser> userManager, IMapper mapper*/)
         {
             _mediator = mediator;
-            _userManager = userManager;
-            _mapper = mapper;
+            //_userManager = userManager;
+            ///_mapper = mapper;
         }
 
         /// <summary>
         /// api/GetCommentById
         /// </summary>
         /// <param name="commentsById"></param>
-        /// <returns></returns>
+        /// <returns>Ok(comment)</returns>
         [HttpGet]
         [Route("getcomment")]
-        public async Task<IActionResult> GetCommentsById([FromBody]Guid newsId)
+        public async Task<IActionResult> GetCommentsById([FromBody]Guid id)
         {
             try
             {
-                var comment = await _mediator.Send(new GetCommentsById(newsId));
+                var comment = await _mediator.Send(new GetCommentsById(id));
                 if (comment != null)
                 {
                     Log.Information("Action GetCommentById => completed successfully ");
                     return Ok(comment);
                 }
+                return NotFound();
             }
             catch (Exception ex)
             {
-
                 Log.Error($"Action GetCommentById {ex.Message}");
+                return NotFound();
             }
-            return BadRequest();
+            
         }
 
         /// <summary>
@@ -60,7 +61,7 @@ namespace WebApiNews_site.Controllers
         /// </summary>
         /// <param name="commentModel"></param>
         /// <param name="newsId"></param>
-        /// <returns></returns>
+        /// <returns>Ok(comment)</returns>
         [HttpPost]
         [Route("addcomment")]
         public async Task<IActionResult> PostComment([FromBody]CommentsDto commentModel, Guid newsId)
@@ -99,7 +100,7 @@ namespace WebApiNews_site.Controllers
         /// api/deletecomment
         /// </summary>
         /// <param name="id"></param>
-        /// <returns></returns>
+        /// <returns>Ok()</returns>
         [HttpDelete]
         [Route("deletcomment")]
         public async Task<IActionResult> DeleteCommentById([FromBody] Guid id)

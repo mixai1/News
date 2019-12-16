@@ -29,12 +29,16 @@ namespace WebApiNews_site.Controllers
             _sendText = sendText;
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [Route("GetNews")]
         public async Task<ActionResult> Get()
         {
             var result = await _mediator.Send(new AllNews());
+            
             //var r = await _generalParser.AddNewsGeneralListNews();
             var res = await _convertJson.ConvertJsonToDictionary();
             List<string> list = new List<string>();
@@ -46,7 +50,7 @@ namespace WebApiNews_site.Controllers
             //{
             //    list.Add(item);
             //}
-            return Ok(result);
+            return Ok(result.FirstOrDefault(n=>n.IndexOfPositive>=2.0));
         }
     }
 }
