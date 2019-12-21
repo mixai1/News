@@ -9,7 +9,7 @@ namespace WebApiEntity.Models
         public string Header { get; set; }
         public string Body { get; set; }
         public string Img { get; set; }
-        public double IndexOfPositive { get; set; }
+        public double ?IndexOfPositive { get; set; }
         public DateTime CreatedDate { get; set; }
         public ICollection<Comments> Comments { get; set; }
 

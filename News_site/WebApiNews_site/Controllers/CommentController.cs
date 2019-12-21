@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Security.Claims;
 using System.Threading.Tasks;
-using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -14,19 +14,17 @@ using WebApiEntity.ModelsDto;
 
 namespace WebApiNews_site.Controllers
 {
-   // [Authorize]
-    [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
+    [Route("api/[controller]")]
     public class CommentController : ControllerBase
     {
         private readonly IMediator _mediator;
-        private readonly IMapper _mapper;
-       // private readonly UserManager<IdentityUser> _userManager;
-        public CommentController(IMediator mediator/*, UserManager<IdentityUser> userManager, IMapper mapper*/)
+        private readonly UserManager<IdentityUser> _userManager;
+        public CommentController(IMediator mediator, UserManager<IdentityUser> userManager)
         {
             _mediator = mediator;
-            //_userManager = userManager;
-            ///_mapper = mapper;
+            _userManager = userManager;
         }
 
         /// <summary>
@@ -53,7 +51,6 @@ namespace WebApiNews_site.Controllers
                 Log.Error($"Action GetCommentById {ex.Message}");
                 return NotFound();
             }
-            
         }
 
         /// <summary>
@@ -70,27 +67,26 @@ namespace WebApiNews_site.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var comment = _mapper.Map<Comments>(new CommentsDto
+                    var author = _userManager.FindByIdAsync(User.FindFirst(ClaimTypes.NameIdentifier).Value).Result;
+                    var comment = new Comments()
                     {
-                        Author = null,  //await _userManager.FindByIdAsync()
+                        Author = author.UserName,
                         Body = commentModel.Body,
-                        CreateDate = DateTime.Today,
+                        CreateDate = DateTime.UtcNow.ToLocalTime(),
                         News = await _mediator.Send(new GetNewsById(newsId))
+                    };
 
-                    });
-  
-                   var result = await _mediator.Send(new AddComment(comment));
+                    var result = await _mediator.Send(new AddComment(comment));
 
                     if (result)
                     {
                         Log.Information("Action PostComment => completed successfully ");
                         return Ok(comment);
-                    }   
+                    }
                 }
             }
             catch (Exception ex)
             {
-
                 Log.Error($"Action PostComment => {ex.Message}");
             }
             return BadRequest();
@@ -102,27 +98,26 @@ namespace WebApiNews_site.Controllers
         /// <param name="id"></param>
         /// <returns>Ok()</returns>
         [HttpDelete]
+        [Authorize(Roles = "admin")]
         [Route("deletcomment")]
         public async Task<IActionResult> DeleteCommentById([FromBody] Guid id)
         {
             try
             {
-              var result =  await _mediator.Send(new DeleteCommentById(id));
+                var result = await _mediator.Send(new DeleteCommentById(id));
                 if (result)
                 {
                     Log.Information("Action DeleteCommentById => completed successfully ");
                     return Ok();
                 }
-                
+
             }
             catch (Exception ex)
             {
-
                 Log.Error($"Action DeleteCommentById => {ex.Message}");
             }
 
-            return BadRequest();
+            return NotFound();
         }
-
     }
 }

@@ -29,7 +29,6 @@ namespace WebApiCQRS.Commands.CommentsCommands
                 Log.Error($"WebApiCQRS,AddComment => {ex.Message}");
                 return false;
             }
-
         }
     }
 }

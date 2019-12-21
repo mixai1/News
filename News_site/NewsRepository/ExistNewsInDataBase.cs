@@ -41,7 +41,6 @@ namespace WebApiNewsRepository
                 Log.Information($"Method ExceptNews  => {ex.Message}");
                 return null;
             }
-
         }
     }
 }

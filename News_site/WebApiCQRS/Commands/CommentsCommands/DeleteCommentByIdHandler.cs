@@ -35,7 +35,6 @@ namespace WebApiCQRS.Commands.CommentsCommands
             }
             catch (Exception ex)
             {
-
                 Log.Error($"WebApiCQRS,DeleteComment => {ex.Message}");
                 return false;
             }

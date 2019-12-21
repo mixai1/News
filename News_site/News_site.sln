@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29215.179
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "News_site", "News_site\News_site.csproj", "{98FAE88C-4EE2-41A6-9A8C-D44195958714}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Data\Data.csproj", "{125E1243-5D27-4CB6-8A2F-383A43AE0C7D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MvcData", "Data\MvcData.csproj", "{125E1243-5D27-4CB6-8A2F-383A43AE0C7D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{2E548BE5-5CC4-4D37-AEDC-3754748D092D}"
 EndProject
@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "Services\Servic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApiNews_site", "WebApiNews_site\WebApiNews_site.csproj", "{B1D6CEB2-6300-4902-8A07-82F632E0D33F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entity", "Entity\Entity.csproj", "{956BAFC7-457D-4CAE-A7F6-E0098DFD8E95}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MvcEntity", "Entity\MvcEntity.csproj", "{956BAFC7-457D-4CAE-A7F6-E0098DFD8E95}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApiCQRS", "WebApiCQRS\WebApiCQRS.csproj", "{DFAE4BC6-A6A1-4C7B-845B-C392244AD460}"
 EndProject
@@ -23,7 +23,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApiServicesAnalysisPosit
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApiNewsRepository", "NewsRepository\WebApiNewsRepository.csproj", "{6D16DBC2-881F-40D9-9366-E8EBEC789283}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XUnitTestWebApiNews_site", "XUnitTestWebApiNews_site\XUnitTestWebApiNews_site.csproj", "{C483B313-5287-4874-875A-33091F3D8B1D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XUnitTestWebApiNews_site", "XUnitTestWebApiNews_site\XUnitTestWebApiNews_site.csproj", "{C483B313-5287-4874-875A-33091F3D8B1D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

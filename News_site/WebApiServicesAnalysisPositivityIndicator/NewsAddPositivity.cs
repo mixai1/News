@@ -20,7 +20,7 @@ namespace WebApiServicesAnalysisPositivity
 
         public async Task AddPositivInNews()
         {
-            var result = await _mediator.Send(new GetListNewsByIndex(0.0000));
+            var result = await _mediator.Send(new GetListNewsWithoutIndex());
             foreach (var item in result)
             {
                 item.IndexOfPositive = await _lemmatization.GetIndexOfPositivity(item);

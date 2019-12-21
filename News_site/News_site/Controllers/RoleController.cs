@@ -101,7 +101,6 @@ namespace News_site.Controllers
             var user = await _userManager.FindByIdAsync(userId);
             if (user != null)
             {
-
                 var userRoles = await _userManager.GetRolesAsync(user);
 
                 var allRoles = _roleManager.Roles.ToList();

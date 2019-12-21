@@ -1,6 +1,4 @@
-﻿using AutoMapper;
-using MediatR;
-using System;
+﻿using MediatR;
 using WebApiEntity.Models;
 
 namespace WebApiCQRS.Commands.CommentsCommands
@@ -12,8 +10,6 @@ namespace WebApiCQRS.Commands.CommentsCommands
         public AddComment(Comments comments)
         {
             Comments = comments;
-        }
-       
+        }  
     }
- 
 }

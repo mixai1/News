@@ -16,7 +16,7 @@ namespace WebApiServicesAnalysisPositivity
         {
             try
             {
-                if (newsText.Length > 1500 && !newsText.Equals(null))
+                if (newsText.Length > 1500 && !String.IsNullOrEmpty(newsText))
                 {
                     string resultString = "";
                     var listDividerString = Divider(newsText, 1500);
@@ -32,7 +32,7 @@ namespace WebApiServicesAnalysisPositivity
                     Log.Information("GetTextFromNews text>1500 =>completed successfully");
                     return resultString;
                 }
-                else
+                else if (!String.IsNullOrEmpty(newsText))
                 {
                     Log.Information("GetTextFromNews text<1500 => completed successfully");
                     return await SendMessegeToApi(newsText);
@@ -42,8 +42,9 @@ namespace WebApiServicesAnalysisPositivity
             catch (Exception ex)
             {
                 Log.Error($" GetTextFromNews =>{ex.Message}");
-                return null;
+                
             }
+            return null;
         }
 
         private async Task<string> SendMessegeToApi(string requestText)

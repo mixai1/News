@@ -28,7 +28,6 @@ namespace WebApiServicesAnalysisPositivity
                 string textBody = news.Body.ToString();
                 int summPositivity = 0;
                 double numberOfmaches = 0;
-                // double index = 0;
                 var result = await _getFromStringToJson.GetJsonResponsToFromNews(textBody);
                 if (!String.IsNullOrEmpty(result))
                 {
@@ -44,25 +43,22 @@ namespace WebApiServicesAnalysisPositivity
                                 numberOfmaches += 1;
                             }
                         }
-
                     }
-                    Log.Information($"GetIndexOfPositivity News Positivity => completed successfully");
+
                     numberOfmaches = numberOfmaches == 0 ? 1 : numberOfmaches;
                     double number = summPositivity / numberOfmaches;
                     const int accuracy = 4;
                     double index = Math.Round(number, accuracy);
-                    if (index.Equals(0.0000))
-                    {
-                        return 0.0001;
-                    }
+                    Log.Information($"GetIndexOfPositivity News Positivity => completed successfully");
+
                     return index;
                 }
-                return 0.0001;
+                return 0;
             }
             catch (Exception ex)
             {
                 Log.Error($"GetIndexOfPositivity =>{ex.Message}");
-                return 0.0001;
+                return 0;
 
             }
         }

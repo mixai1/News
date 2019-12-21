@@ -32,8 +32,6 @@ namespace WebApiCQRS.Commands.NewsCommands
                 Log.Error($"WebApiCQRS, AddListNews => {ex.Message}");
                 return false;
             }
-               
-
         }  
     }
 }

@@ -32,23 +32,15 @@ namespace WebApiNews_site.Controllers
             _roleManager = roleManager;
         }
 
-        [Authorize(Roles ="admin")]
-        [HttpGet]
-        [Route("do")]
-        public IActionResult Do()
-        {
-            return Ok("Method Do");
-        }
-
         /// <summary>
         /// 
         /// </summary>
         /// <param name="model"></param>
-        /// <returns></returns>
+        /// <returns>Ok(token)</returns>
+        [HttpPost]
         [AllowAnonymous]
         [Route("register")]
-        [HttpPost]
-        public async Task<object> Register([FromBody] RegisterDto model)
+        public async Task<IActionResult> Register([FromBody] RegisterDto model)
         {
             try
             {
@@ -59,6 +51,7 @@ namespace WebApiNews_site.Controllers
                         UserName = model.UserName,
                         Email = model.Email
                     };
+
                     var result = await _userManager.CreateAsync(user, model.Password);
 
                     if (result.Succeeded)
@@ -73,27 +66,28 @@ namespace WebApiNews_site.Controllers
                         }
                         await _signInManager.SignInAsync(user, false);
                         Log.Information("Action Register => completed successfully");
-                        return await CreateJWTToken(model.Email, user);
+                        var token = await CreateJWTToken(model.Email, user);
+
+                        return Ok(token);
                     }
                 }
-                return StatusCode(200);
+                return BadRequest();
             }
             catch (Exception ex)
             {
                 Log.Error($"Action Register => {ex.Message}");
-                return BadRequest();
+                return StatusCode(500);
             }
-            
         }
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="model"></param>
-        /// <returns></returns>
+        /// <returns>Ok(token)</returns>
         [HttpPost]
         [Route("login")]
-        public async Task<object> Login([FromBody] LoginDto model)
+        public async Task<IActionResult> Login([FromBody] LoginDto model)
         {
             try
             {
@@ -103,20 +97,18 @@ namespace WebApiNews_site.Controllers
                 {
                     var appUser = _userManager.Users.SingleOrDefault(r => r.Email == model.Email);
                     Log.Information("Action Login => completed successfully");
-                    return await CreateJWTToken(model.Email, appUser);
+                    var token= await CreateJWTToken(model.Email, appUser);
 
+                    return Ok(token);
                 }
             }
             catch (Exception ex)
             {
-
                 Log.Error($"Action Login =>{ex.Message}");
             }
 
-
-            return BadRequest();
+            return StatusCode(500);
         }
-
 
         private async Task<object> CreateJWTToken(string email, IdentityUser user)
         {
@@ -141,5 +133,4 @@ namespace WebApiNews_site.Controllers
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
     }
-
 }

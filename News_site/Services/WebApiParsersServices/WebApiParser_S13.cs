@@ -32,13 +32,14 @@ namespace Services.WebApiParsersServices
                     var header = HttpUtility.HtmlDecode(item.SelectSingleNode(".//*[@class='title']").InnerText);
                     var description = HttpUtility.HtmlDecode(item.SelectSingleNode(".//p").InnerText);
                     description = description.Replace("  ", " ");
-                    var img = HttpUtility.HtmlDecode(item.SelectSingleNode(".//img").Attributes["src"].Value);
+                    var img = "https://unsplash.it/250/250?random&i";
+                   // var img = HttpUtility.HtmlDecode(item.SelectSingleNode(".//img").Attributes["src"].Value);
                     listnews.Add(new News()
                     {
                         Header = header,
                         Body = description,
-                        Img = "",
-                        IndexOfPositive = 0.0000,
+                        Img = img,
+                        IndexOfPositive = null,
                         CreatedDate = DateTime.Now
                     }); ;
                 }

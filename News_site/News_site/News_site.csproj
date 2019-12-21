@@ -23,8 +23,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj" />
-    <ProjectReference Include="..\Data\Data.csproj" />
-    <ProjectReference Include="..\Entity\Entity.csproj" />
+    <ProjectReference Include="..\Data\MvcData.csproj" />
+    <ProjectReference Include="..\Entity\MvcEntity.csproj" />
     <ProjectReference Include="..\Services\Services.csproj" />
   </ItemGroup>
 
