@@ -61,7 +61,7 @@ namespace WebApiNews_site.Controllers
         /// <returns>Ok(comment)</returns>
         [HttpPost]
         [Route("addcomment")]
-        public async Task<IActionResult> PostComment([FromBody]CommentsDto commentModel, Guid newsId)
+        public async Task<IActionResult> PostComment([FromBody]CommentsDto commentModel)
         {
             try
             {
@@ -73,7 +73,7 @@ namespace WebApiNews_site.Controllers
                         Author = author.UserName,
                         Body = commentModel.Body,
                         CreateDate = DateTime.UtcNow.ToLocalTime(),
-                        News = await _mediator.Send(new GetNewsById(newsId))
+                       // News = await _mediator.Send(new GetNewsById(newsId))
                     };
 
                     var result = await _mediator.Send(new AddComment(comment));

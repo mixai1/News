@@ -20,7 +20,7 @@ namespace WebApiNews_site.Controllers
         }
 
         /// <summary>
-        /// api/news/getnews
+        /// GET,getNewsById
         /// </summary>
         /// <returns>Ok(news)</returns>
         [HttpGet]
@@ -43,7 +43,7 @@ namespace WebApiNews_site.Controllers
         }
 
         /// <summary>
-        /// api/news/getewswithpositivity
+        /// GET, getNewsPositivity
         /// </summary>
         /// <returns>Ok(listNews)</returns>
         [HttpGet]
@@ -64,7 +64,7 @@ namespace WebApiNews_site.Controllers
         }
 
         /// <summary>
-        /// 
+        /// DELETE, DeleteNews
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>

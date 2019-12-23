@@ -33,10 +33,10 @@ namespace WebApiNews_site.Controllers
         }
 
         /// <summary>
-        /// 
+        /// POST,Register
         /// </summary>
         /// <param name="model"></param>
-        /// <returns>Ok(token)</returns>
+        /// <returns>Ok(User)</returns>
         [HttpPost]
         [AllowAnonymous]
         [Route("register")]
@@ -67,8 +67,15 @@ namespace WebApiNews_site.Controllers
                         await _signInManager.SignInAsync(user, false);
                         Log.Information("Action Register => completed successfully");
                         var token = await CreateJWTToken(model.Email, user);
+                        var role = await _userManager.GetRolesAsync(user);
 
-                        return Ok(token);
+                        return Ok(new UserDto
+                        {
+                            Name = user.UserName,
+                            Email = user.Email,
+                            Role = role,
+                            Token = token
+                        });
                     }
                 }
                 return BadRequest();
@@ -81,10 +88,10 @@ namespace WebApiNews_site.Controllers
         }
 
         /// <summary>
-        /// 
+        /// POST,Login
         /// </summary>
         /// <param name="model"></param>
-        /// <returns>Ok(token)</returns>
+        /// <returns>Ok(User)</returns>
         [HttpPost]
         [Route("login")]
         public async Task<IActionResult> Login([FromBody] LoginDto model)
@@ -97,9 +104,16 @@ namespace WebApiNews_site.Controllers
                 {
                     var appUser = _userManager.Users.SingleOrDefault(r => r.Email == model.Email);
                     Log.Information("Action Login => completed successfully");
-                    var token= await CreateJWTToken(model.Email, appUser);
+                    var token = await CreateJWTToken(model.Email, appUser);
+                    var role = await _userManager.GetRolesAsync(appUser);
 
-                    return Ok(token);
+                    return Ok(new UserDto
+                    {
+                        Name = appUser.UserName,
+                        Email = appUser.Email,
+                        Role = role,
+                        Token = token
+                    });
                 }
             }
             catch (Exception ex)
